@@ -1,0 +1,96 @@
+[
+  {
+    "name": "show_faces",
+    "desc": {
+      "zh_TW": "使用者頭像",
+      "zh_CN": "使用者頭像",
+      "ja_JP": "アバター",
+      "en_US": "Show Faces"
+    },
+    "type": "select",
+    "elements": {
+      "true": {
+        "zh_TW": "開啟",
+        "zh_CN": "開啟",
+        "ja_JP": "オン",
+        "en_US": "On"
+      },
+      "false": {
+        "zh_TW": "關閉",
+        "zh_CN": "关闭",
+        "ja_JP": "オフ",
+        "en_US": "Off"
+      }
+    },
+    "default": "true"
+  },
+  {
+    "name": "width",
+    "desc": {
+      "zh_TW": "寬度",
+      "zh_CN": "宽度",
+      "ja_JP": "幅",
+      "en_US": "Width"
+    },
+    "type": "text",
+    "default": "600"
+  },
+  {
+    "name": "position",
+    "desc": {
+      "zh_TW": "位置",
+      "zh_CN": "位置",
+      "ja_JP": "ロケーション",
+      "en_US": "Location"
+    },
+    "type": "select",
+    "elements": {
+      "top": {
+        "desc": {
+          "zh_TW": "顯示於文章上面",
+          "zh_CN": "显示于文章上面",
+          "ja_JP": "資料上記の",
+          "en_US": "Shown in the article above"
+        }
+      },
+      "down": {
+        "desc": {
+          "zh_TW": "顯示於文章下面",
+          "zh_CN": "显示于文章下面",
+          "ja_JP": "資料以下のように",
+          "en_US": "Shown in the article below"
+        }
+      }
+    },
+    "default": "top"
+  },
+  {
+    "name": "colorscheme",
+    "desc": {
+      "zh_TW": "色系",
+      "zh_CN": "色系",
+      "ja_JP": "カラースキーム",
+      "en_US": "Color scheme"
+    },
+    "type": "select",
+    "elements": {
+      "light": {
+        "desc": {
+          "zh_TW": "亮系",
+          "zh_CN": "亮系",
+          "en_US": "Light",
+          "ja_JP": "ライト"
+        }
+      },
+      "dark": {
+        "desc": {
+          "zh_TW": "暗系",
+          "zh_CN": "暗系",
+          "en_US": "Dark",
+          "ja_JP": "ダーク"
+        }
+      }
+    },
+    "default": "light"
+  }
+]
