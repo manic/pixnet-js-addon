@@ -10,16 +10,20 @@
     "type": "select",
     "elements": {
       "true": {
-        "zh_TW": "開啟",
-        "zh_CN": "開啟",
-        "ja_JP": "オン",
-        "en_US": "On"
+        "desc": {
+          "zh_TW": "開啟",
+          "zh_CN": "開啟",
+          "ja_JP": "オン",
+          "en_US": "On"
+        }
       },
       "false": {
-        "zh_TW": "關閉",
-        "zh_CN": "关闭",
-        "ja_JP": "オフ",
-        "en_US": "Off"
+        "desc": {
+          "zh_TW": "關閉",
+          "zh_CN": "关闭",
+          "ja_JP": "オフ",
+          "en_US": "Off"
+        }
       }
     },
     "default": "true"
