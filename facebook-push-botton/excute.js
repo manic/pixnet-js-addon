@@ -1,0 +1,1 @@
+jQuery.pixAddonFacebookPushButton(#{OPTION});
