@@ -1,0 +1,134 @@
+<!DOCTYPE HTML> 
+<html lang="zh-TW"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>Flickr</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script> 
+<script src="js/jquery.cookie.min.js" type="text/javascript"></script> 
+<script src="js/jquery.query.min.js" type="text/javascript"></script> 
+<script src="js/json2.min.js" type="text/javascript"></script> 
+<script type="text/javascript">
+<!--
+(function($){
+    var flickr = {
+        apikey: "",
+	apiurl: "http://api.flickr.com/services/rest/",
+	generate_url: function(method, d) {
+	   var url = flickr.apiurl + '?format=json&method=' + method + '&api_key=' + this.apikey;
+	   $.each(d, function(k, v){
+	       url += '&' + k + '=' + v;
+	   });
+	   url += '&jsoncallback=?';
+	   return url;
+	}
+    };
+
+    $(document).ready(function(){
+	$('#form-flickr-account').submit(function(){
+	    var account = $('#input-flickr-account').val();
+	    var url;
+	    if (account.match(/@/)) {
+	        url = flickr.generate_url('flickr.people.findByEmail', {find_email: account});
+	    } else {
+	        url = flickr.generate_url("flickr.people.findByUsername", {username: account});
+	    }
+	    $.getJSON(url, function(data){
+		var url;
+		if ('ok' == data.stat) {
+		    $.cookie('flickr_account', account, { expires: 365, path: '/' });
+		    url = flickr.generate_url('flickr.photosets.getList', {user_id: data.user.nsid});
+		    $.getJSON(url, function(data){
+			$.each(data.photosets.photoset, function(k, v){
+			    var opt = $("<option>").attr('id', 'option-set-' + v.id).attr("value", v.id).append($("<span>").text(v.title._content + ' (' + v.photos + ')').html());
+			    $('#input-flickr-set').append(opt);
+			});
+			$('#div-sets').show();
+
+			var flickr_set = $.cookie('flickr_set');
+			if (flickr_set) {
+			    $('#option-set-' + flickr_set).attr('selected', 'selected');
+			    $('#input-flickr-set').change();
+			}
+		    });
+		}
+	    });
+	    return false;
+	});
+	
+	$('#input-flickr-set').change(function(){
+	    var id = $('#input-flickr-set').val();
+	    var url = flickr.generate_url('flickr.photosets.getPhotos', {photoset_id: id, extras: "url_sq,url_t,url_s,url_m,path_alias"});
+	    if ("" == id) {
+		return;
+	    }
+	    $('#div-photos').empty();
+
+	    $.getJSON(url, function(data){
+		$.cookie('flickr_set', id, { expires: 365, path: '/' });
+		$.each(data.photoset.photo, function(k, v){
+		    var img = $('<img>').attr('src', v.url_sq).attr('title', v.title).attr('alt', v.title).attr('border', 0);
+		    var span_img = $('<span class="data-image-url">').css('display', 'none').append(v.url_m);
+		    var span_page = $('<span class="data-page-url">').css('display', 'none').append("http://www.flickr.com/photos/" + v.pathalias + "/" + v.id);
+		    var item = $('<a>').attr('class', 'photo').attr('href', '#').append(img).append(span_img).append(span_page);
+		    $('#div-photos').append(item);
+		});
+		$('#div-select-photos').show();
+	    });
+
+	});	
+
+	$('a.photo').live('click', function(){
+	    var url = $(this).find('span.data-image-url').text();
+	    var page = $(this).find('span.data-page-url').text();
+	    var img = $(this).find('img:first').clone();
+	    img.attr('src', url);
+	    var linktag = $('<a>').attr('href', page).append(img);
+	    var data = {reply: $('<span>').append(linktag).html()};
+	    $('#json_data').val(JSON.stringify(data));
+	    var return_url = $.query.get('return_url');
+	    var ptoken = $.query.get('pToken');
+	    var addon_id = $.query.get('addon_id');
+	    $('#addon_id').val(addon_id);
+	    $('#return-form').attr('action', return_url + '?pToken=' + ptoken).submit();
+	    return false;
+	});
+
+	var flickr_account = $.cookie('flickr_account');
+	if (flickr_account) {
+	    $('#input-flickr-account').val(flickr_account);
+	    $('#form-flickr-account').submit();
+	}
+
+    });
+})(jQuery);
+//-->
+</script>
+<style type="text/css">
+div {
+width: 100%;
+margin: 10px;       
+}
+.photo {
+margin: 3px;
+}	    
+</style>
+</head>
+<body>
+<form action="" method="POST" id="return-form">
+<input type="hidden" name="addon_id" id="addon_id" value="">
+<input type="hidden" name="json_data" id="json_data" value="">
+</form>
+<div id="div-account">
+<form id="form-flickr-account">
+1. 請輸入 Flickr 帳號或 Email: <input type="text" name="flickr_account" id="input-flickr-account" value=""><input type="submit" name="submit" value="確認輸入"></form>
+</div>
+<div id="div-sets" style="display:none">
+2. 請選擇相簿集: <select id="input-flickr-set"><option value="" selected="selected">請選擇</option></select>
+</div>
+<div id="div-select-photos" style="display:none">
+3. 請選擇相片:
+<div id="div-photos">
+</div>
+</div>
+</body>
+</html>
