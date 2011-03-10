@@ -1,0 +1,50 @@
+<!DOCTYPE HTML> 
+<html lang="zh-TW"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>Flickr</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
+<script src="js/jquery.query.min.js" type="text/javascript"></script> 
+<script src="js/json2.min.js" type="text/javascript"></script> 
+<script type="text/javascript">
+<!--
+(function($){
+    $(document).ready(function(){
+	$('#form-html-code').live('submit', function(){
+	    var data = {reply: $('#input-html-code').val()};
+	    $('#json_data').val(JSON.stringify(data));
+	    var return_url = $.query.get('return_url');
+	    var ptoken = $.query.get('pToken');
+	    var addon_id = $.query.get('addon_id');
+	    $('#addon_id').val(addon_id);
+	    $('#return-form').attr('action', return_url + '?pToken=' + ptoken).submit();
+	    return false;
+	});
+    });
+})(jQuery);
+//-->
+</script>
+<style type="text/css">
+div {
+width: 100%;
+margin: 10px;       
+}
+p {
+margin: 5px 2px;
+}	    
+</style>
+</head>
+<body>
+<form action="" method="POST" id="return-form">
+<input type="hidden" name="addon_id" id="addon_id" value="">
+<input type="hidden" name="json_data" id="json_data" value="">
+</form>
+<div id="div-account">
+<form id="form-html-code">
+<p>請輸入想要插入的語法 : </p>
+<textarea name="htmlcode" id="input-html-code" rows="8" cols="40"></textarea>
+<p><input type="submit" name="submit" value="確認輸入"></p>
+</form>
+</div>
+</body>
+</html>
