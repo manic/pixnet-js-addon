@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh_TW">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>PIXNET Addons</title>
+        <link rel="stylesheet" type="text/css" href="http://s.ytimg.com/yt/cssbin/www-core-vflbWW7j3.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
+        <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
+        <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
+
+        <script type="text/javascript">
+            <!--
+            (function($) {
+                function get_data()
+                {
+                    var matches = $( "#url" ).val().match( /v=([\w\-]+)/ );
+                    var width = $('#width').val();
+                    var height = $('#height').val();
+                    var myData = [{ YoutubeId: matches[1], Width: width, Height: height}];
+
+                    var data = $('#template').html().replace(/\${Height}/, height).replace(/\${Width}/, width).replace(/\${YoutubeId}/, matches[1]);
+                    return data;
+                    alert(data);
+                    return myData;
+                }
+
+                function changeSize(type)
+                {
+                    var w = 425;
+                    var h = 349;
+                    if ('medium' == type) {
+                        w = 480;
+                        h = 390;
+                    } else if ('large' == type) {
+                        w = 640;
+                        h = 510;
+                    } else if ('hd720' == type) {
+                        w = 960;
+                        h = 750;
+                    } else {
+                        type = 'default';
+                    }
+                    $('#watch-customize-embed-size').find('a.radio-selected').removeClass('radio-selected');
+                    $('#watch-embed-size-radio-' + type).addClass('radio-selected');
+                    $('#height').val(h);
+                    $('#width').val(w);
+                }
+
+                $(function() {
+                    $('#button_preview').click(function(){
+                        $( "#preview" ).empty().html(get_data());
+                        return false;
+                    });
+
+                    $('#button_return').click(function(){
+                        var return_url = $.query.get('return_url');
+                        var ptoken = $.query.get('pToken');
+                        var addon_id = $.query.get('addon_id');
+                        var json_data = { reply: get_data() };
+                        $('#form').attr('action', return_url);
+                        $('#pToken').val(ptoken);
+                        $('#addon_id').val(addon_id);
+                        $('#json_data').val(JSON.stringify(json_data));
+                        $( "#form" ).submit();
+                    });
+
+                    $('a.embed-radio-link').click(function(){
+                        var type = $(this).attr('id').split('-')[4];
+                        changeSize(type);
+                        return false;
+                    });
+
+                    changeSize('default');
+                });
+            })(jQuery);
+            //-->
+        </script>
+    </head>
+    <body>
+        <p>
+        輸入 youtube 網址: <input type="text" name="url" id="url"><br>
+        <input type="hidden" name="width" id="width" value="">
+        <input type="hidden" name="height" id="height" value="">
+        <div id="watch-customize-embed-size">
+            <a class="embed-radio-link" id="watch-embed-size-radio-default">
+                <span id="watch-embed-size-text-default">425 × 349</span>
+                <div class="watch-embed-radio-box" id="watch-embed-size-default-box"></div>
+            </a>
+            <a class="embed-radio-link" id="watch-embed-size-radio-medium">
+                <span id="watch-embed-size-text-medium">480 × 390</span>
+                <div class="watch-embed-radio-box" id="watch-embed-size-medium-box"></div>
+            </a>
+            <a class="embed-radio-link" id="watch-embed-size-radio-large">
+                <span id="watch-embed-size-text-large">640 × 510</span>
+                <div class="watch-embed-radio-box" id="watch-embed-size-large-box"></div>
+            </a>
+            <a class="embed-radio-link" id="watch-embed-size-radio-hd720">
+                <span id="watch-embed-size-text-hd720">960 × 750</span>
+                <div class="watch-embed-radio-box" id="watch-embed-size-hd720-box"></div>
+            </a>
+            <div class="clearL"></div>
+        </div>
+        <button id="button_preview" class="yt-uix-button">預覽</button>
+        <button id="button_return" class="yt-uix-button">送出</button>
+        </p>
+        <div id="preview">
+        </div>
+
+        <script type="text/html" id="template"><iframe title="YouTube video player" width="${Width}" height="${Height}" src="http://www.youtube.com/embed/${YoutubeId}" frameborder="0" allowfullscreen></iframe></script>
+
+        <form action="" method="post" id="form">
+            <input type="hidden" name="addon_id" id="addon_id" value="">
+            <input type="hidden" name="pToken" id="pToken" value="">
+            <input type="hidden" name="json_data" id="json_data" value="">
+        </form>
+
+    </body>
+</html>
