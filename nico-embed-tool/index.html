@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh_TW">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>PIXNET Addons</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
+        <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
+        <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
+<script type="text/javascript">
+<!--
+(function($) {
+    function get_data()
+    {
+        var info_template = '<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/${NicoId}" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"></iframe>';
+        var player_template = '<script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/${NicoId}"></' + 'script>';
+        var matches = $( "#url" ).val().match( /watch\/(\w+)/ );
+        var myData = { NicoId: matches[1]};
+        var embadded_type = $( "input[name='embadded_type']:checked" ).val();
+        if ( "info" == embadded_type ) {
+            var ret_data = info_template.replace('${NicoId}', myData.NicoId);
+        } else {
+            var ret_data = player_template.replace('${NicoId}', myData.NicoId);
+        }
+        return ret_data;
+    }
+
+    $(function(){
+        $('#button_preview').click(function() {
+            var embadded_type = $( "input[name='embadded_type']:checked" ).val();
+            if ( 'player' == embadded_type) {
+                alert('外嵌影片不提供預覽');
+                return false;
+            }
+            $( "#preview" ).empty().append( get_data() );
+            return false;
+        });
+
+        $('#button_return').click(function() {
+            var return_url = $.query.get('return_url');
+            var ptoken = $.query.get('pToken');
+            var addon_id = $.query.get('addon_id');
+            var json_data = { reply: get_data() };
+            $('#form').attr('action', return_url);
+            $('#pToken').val(ptoken);
+            $('#addon_id').val(addon_id);
+            $('#json_data').val(JSON.stringify(json_data));
+            $( "#form" ).submit();
+            return false;
+        });
+    });
+})(jQuery)
+//-->
+</script>
+    </head>
+    <body>
+        <p>
+        輸入 NICO 動畫網址 : <input type="text" name="url" id="url"><br>
+        <input type="radio" name="embadded_type" value="info" checked="true">動畫情報
+        <input type="radio" name="embadded_type" value="player">外嵌動畫<br>
+        <button id="button_preview">預覽</button>
+        <button id="button_return" onclick="return_to_proxy()">送出</button>
+        </p>
+        <div id="preview">
+        </div>
+
+        <form action="" method="post" id="form">
+            <input type="hidden" name="addon_id" id="addon_id" value="">
+            <input type="hidden" name="pToken" id="pToken" value="">
+            <input type="hidden" name="json_data" id="json_data" value="">
+        </form>
+
+    </body>
+</html>
