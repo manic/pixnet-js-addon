@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh_TW">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>PIXNET Addons</title>
+        <link rel="stylesheet" type="text/css" href="//s.pixfs.net/panel/css/reset.css?v=bb8df0344ca6e52bb17ff00658e1633a" />
+        <link rel="stylesheet" type="text/css" href="//s.pixfs.net/panel/css/style.css?v=bb8df0344ca6e52bb17ff00658e1633a" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
+        <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
+        <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAvO6rUakdYkzVgD-Pkd2EkxQrL4B469nuZ3sFM84vY6d1mQ4E3hSF3HhYoKjSTNmHFfhWCWbuNOGuWw" type="text/javascript"></script>
+        <script type="text/javascript">
+            <!--
+            (function($) {
+                var pix = {};
+                var map = null;
+                var geocoder = null;
+                $(function(){
+                    $('#popup-header > h4').html('選擇地圖');
+                    if (GBrowserIsCompatible()) {
+                        map = new GMap2(document.getElementById("map1"));
+                        map.setCenter(new GLatLng(25.008961, 121.520279), 15);
+                        map.setUIToDefault();
+                        geocoder = new GClientGeocoder();
+                    } else {
+                        alert('你使用的瀏覽器不支持 Google Map!');
+                    }
+                    $('.map_size').click(function() {
+                        var point = map.getCenter();
+                        if ('1' == $(this).val()) {
+                            $('#map1').width(600).height(450);
+                        } else if ('2' == $(this).val()) {
+                            $('#map1').width(425).height(350);
+                        } else if ('3' == $(this).val()) {
+                            $('#map1').width(300).height(300);
+                        }
+                        map.checkResize();
+                        map.panTo(point);
+                    });
+
+                    $('#search_button').click(function() {
+                        var address = $('#spotlight_name').val();
+                        if (geocoder && address) {
+                            geocoder.getLatLng(address, function(point) {
+                                if (!point) {
+                                    alert(address + ' 找不到');
+                                } else {
+                                    map.setCenter(point, 15);
+                                    var marker = new GMarker(point);
+                                    map.addOverlay(marker);
+                                    marker.openInfoWindowHtml(address);
+                                }
+                            });
+                        }
+                        return false;
+                    });
+
+                    $('#send_button').click(function(){
+                        if ('' == $('#spotlight_name').val()) {
+                            alert('請輸入地點定位');
+                            return false;
+                        }
+                        var return_url = $.query.get('return_url');
+                        var ptoken = $.query.get('pToken');
+                        var addon_id = $.query.get('addon_id');
+                        var json_data = {reply: pix.gmapoutput()};
+                        $('#form').attr('action', return_url);
+                        $('#pToken').val(ptoken);
+                        $('#addon_id').val(addon_id);
+                        $('#json_data').val(JSON.stringify(json_data));
+                        $( "#form" ).submit();
+                        return false;
+                    });
+                });
+
+                pix.gmapoutput = function() {
+                    var str = 'ie=UTF8';
+                    var point = map.getCenter();
+                    str += '&f=q&source=s_q';
+                    str += '&q=' + encodeURIComponent($('#spotlight_name').val());
+                    str += '&sll=' + map.getBounds().getSouthWest().toUrlValue();
+                    str += '&ll=' + point.toUrlValue();
+                    str += '&mrt=loc';
+                    str += '&z=' + map.getZoom();
+                    str += '&t=' + map.getCurrentMapType().getUrlArg();
+                    var src = 'http://maps.google.com/?' + str + '&output=embed';
+                    src = src.replace(/&/g, "&amp;");
+                    var href = 'http://maps.google.com/?' + str + '&source=embed';
+                    var iframe = '<iframe width="%width" height="%height" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="%src"></iframe><br /><small><a href="%href" style="color:#0000FF;text-align:left">檢視較大的地圖</a></small>';
+                    iframe = iframe.replace(/%width/, $('#map1').width());
+                    iframe = iframe.replace(/%height/, $('#map1').height());
+                    iframe = iframe.replace(/%src/, src);
+                    iframe = iframe.replace(/%href/, href);
+                    return iframe;
+                };
+            })(jQuery);
+            //-->
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            <table class="settings-table th-medium" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <th><label for="spotlight_name">地點定位</label></th>
+                        <td>
+                            <input name="spotlight_name" maxlength="255" class="input-style input-text" value="" type="text" style="background:transparent;line-height:15px;width:300px;" id="spotlight_name">　
+                            <button type="button" id="search_button">搜尋</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="spotlight_enable">顯示大小</label></th>
+                        <td>
+                            <input name="map_size" value="1" type="radio" class="map_size"> 600px
+                            <input name="map_size" value="2" type="radio" class="map_size" checked="true"> 425px
+                            <input name="map_size" value="3" type="radio" class="map_size"> 300px
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="spotlight_content">編輯地圖</label></th>
+
+                        <td>
+                            <div id="map1" style="width:425px;height:350px;float:left"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <button id="send_button">送出</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form action="" method="post" id="form">
+            <input type="hidden" name="addon_id" id="addon_id" value="">
+            <input type="hidden" name="pToken" id="pToken" value="">
+            <input type="hidden" name="json_data" id="json_data" value="">
+        </form>
+    </body>
+</html>
