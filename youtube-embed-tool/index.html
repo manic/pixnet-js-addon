@@ -14,14 +14,29 @@
                 function get_data()
                 {
                     var matches = $( "#url" ).val().match( /v=([\w\-]+)/ );
-                    var width = $('#width').val();
-                    var height = $('#height').val();
-                    var myData = [{ YoutubeId: matches[1], Width: width, Height: height}];
-
-                    var data = $('#template').html().replace(/\${Height}/, height).replace(/\${Width}/, width).replace(/\${YoutubeId}/, matches[1]);
+                    if (!matches) return '';
+                    var type = $('input[name="share-embed-size"]:checked').val();
+                    var w = 560;
+                    var h = 315;
+                    var custom_w = parseInt($('input[name="share-embed-size-width"]').val());
+                    var custom_h = parseInt($('input[name="share-embed-size-height"]').val());
+                    if ('medium' == type) {
+                        w = 640;
+                        h = 360;
+                    } else if ('large' == type) {
+                        w = 835;
+                        h = 480;
+                    } else if ('hd720' == type) {
+                        w = 1280;
+                        h = 720;
+                    } else if ('custom' == type) {
+                        if (!custom_w || !custom_h) return '';
+                        if (custom_w < 560 || custom_h < 315) return '';
+                        w = custom_w;
+                        h = custom_h;
+                    }
+                    var data = $('#template').html().replace(/\${Height}/, h).replace(/\${Width}/, w).replace(/\${YoutubeId}/, matches[1]);
                     return data;
-                    alert(data);
-                    return myData;
                 }
 
                 function changeSize(type)
@@ -37,14 +52,24 @@
                     } else if ('hd720' == type) {
                         w = 1280;
                         h = 720;
+                    } else if ('custom' == type) {
                     } else {
                         type = 'default';
                     }
                     $('li.share-embed-size').removeClass('selected');
                     $('li.' + type).addClass('selected');
-                    $('#height').val(h);
-                    $('#width').val(w);
+                    preview();
                 }
+
+                function preview()
+                {
+                    var data = get_data();
+                    if (data) {
+                        $( "#preview" ).empty().html(data);
+                    }
+                    return false;
+                }
+
 
                 $(function() {
                     $('#button_preview').click(function(){
@@ -69,7 +94,16 @@
                         return false;
                     });
 
-                    changeSize('default');
+                    $('input[name="share-embed-size-width"]').change(function() {
+                        $('input[name="share-embed-size-height"]').val(parseInt($(this).val() * 9 / 16));
+                        preview();
+                    });
+                    $('input[name="share-embed-size-height"]').change(function() {
+                        $('input[name="share-embed-size-width"]').val(parseInt($(this).val() * 16 / 9));
+                        preview();
+                    });
+
+                    //changeSize('default');
                 });
             })(jQuery);
             //-->
@@ -82,7 +116,7 @@
         <input type="hidden" name="width" id="width" value="">
         <input type="hidden" name="height" id="height" value="">
         <ul class="share-embed-size-list">
-            <li class="share-embed-size default wide selected">
+            <li class="share-embed-size default wide">
             <label>
                 <input type="radio" name="share-embed-size" value="default" class="share-embed-size-radio " data-width="560" data-height="315">
                 <span class="share-embed-size-name">560 × 315</span>
@@ -111,30 +145,28 @@
             </label>
             </li>
 
-            <!--
             <li class="share-embed-size custom">
             <label>
                 <input type="radio" name="share-embed-size" value="custom" class="share-embed-size-radio share-embed-size-radio-custom" data-width="-1" data-height="-1">
                 <span class="share-embed-size-name">
                     自訂
                 </span>
+                <ul class="share-embed-customize">
+                    <li>
+                    <label>
+                        寬度：
+                        <input type="text" class="yt-uix-form-input-text share-embed-size-custom-width" maxlength="4" name="share-embed-size-width"> px
+                    </label>
+                    </li>
+                    <li>
+                    <label>
+                        高度：
+                        <input type="text" class="yt-uix-form-input-text share-embed-size-custom-height" maxlength="4" name="share-embed-size-height"> px
+                    </label>
+                    </li>
+                </ul>
             </label>
-            <ul class="share-embed-customize">
-                <li>
-                <label>
-                    寬度：
-                    <input type="text" class="yt-uix-form-input-text share-embed-size-custom-width" maxlength="4"> px
-                </label>
-                </li>
-                <li>
-                <label>
-                    高度：
-                    <input type="text" class="yt-uix-form-input-text share-embed-size-custom-height" maxlength="4"> px
-                </label>
-                </li>
-            </ul>
             </li>
-            //-->
         </ul>
         </div>
         <button id="button_preview" class="yt-uix-button">預覽</button>
