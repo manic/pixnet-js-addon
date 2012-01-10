@@ -13,7 +13,11 @@
             (function($) {
                 function get_data()
                 {
-                    var matches = $( "#url" ).val().match( /v=([\w\-]+)/ );
+                    var url = $( '#url' ).val();
+                    var matches = url.match( /v=([\w\-]+)/ );
+                    if (!matches) {
+                        matches = url.match( /youtu.be\/([\w\-]+)/ );
+                    }
                     if (!matches) return '';
                     var type = $('input[name="share-embed-size"]:checked').val();
                     var w = 560;
