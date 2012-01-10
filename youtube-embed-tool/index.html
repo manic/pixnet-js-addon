@@ -95,12 +95,14 @@
                         return false;
                     });
 
-                    $('input[name="share-embed-size-width"]').change(function() {
+                    $('input[name="share-embed-size-width"]').keyup(function() {
                         $('input[name="share-embed-size-height"]').val(parseInt($(this).val() * 9 / 16));
+                        $('input[name="share-embed-size"][value="custom"]').click();
                         preview();
                     });
-                    $('input[name="share-embed-size-height"]').change(function() {
+                    $('input[name="share-embed-size-height"]').keyup(function() {
                         $('input[name="share-embed-size-width"]').val(parseInt($(this).val() * 16 / 9));
+                        $('input[name="share-embed-size"][value="custom"]').click();
                         preview();
                     });
 
