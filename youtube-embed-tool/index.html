@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>PIXNET Addons</title>
         <link rel="stylesheet" type="text/css" href="./www.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
         <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
         <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
 
@@ -89,8 +89,8 @@
                         $('#json_data').val(JSON.stringify(json_data));
                         $( "#form" ).submit();
                     });
-                    $('li.share-embed-size').click(function() {
-                        var type = $(this).find('input').val();
+                    $('input[name="share-embed-size"]').click(function() {
+                        var type = $(this).val();
                         changeSize(type);
                         return false;
                     });
