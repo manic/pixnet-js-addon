@@ -46,21 +46,6 @@
 
                 function changeSize(type)
                 {
-                    var w = 560;
-                    var h = 315;
-                    if ('medium' == type) {
-                        w = 640;
-                        h = 360;
-                    } else if ('large' == type) {
-                        w = 835;
-                        h = 480;
-                    } else if ('hd720' == type) {
-                        w = 1280;
-                        h = 720;
-                    } else if ('custom' == type) {
-                    } else {
-                        type = 'default';
-                    }
                     $('li.share-embed-size').removeClass('selected');
                     $('li.' + type).addClass('selected');
                     preview();
@@ -101,13 +86,11 @@
 
                     $('input[name="share-embed-size-width"]').keyup(function() {
                         $('input[name="share-embed-size-height"]').val(parseInt($(this).val() * 9 / 16));
-                        $('input[name="share-embed-size"][value="custom"]').click();
-                        preview();
+                        $('input[name="share-embed-size"][value="custom"]').trigger('click');
                     });
                     $('input[name="share-embed-size-height"]').keyup(function() {
                         $('input[name="share-embed-size-width"]').val(parseInt($(this).val() * 16 / 9));
-                        $('input[name="share-embed-size"][value="custom"]').click();
-                        preview();
+                        $('input[name="share-embed-size"][value="custom"]').trigger('click');
                     });
 
                     //changeSize('default');
