@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh_TW">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PIXNET Addons</title>
-        <link rel="stylesheet" type="text/css" href="./www.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
+        <link rel="stylesheet" type="text/css" href="./www.css" >
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> 
         <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
         <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
 
@@ -44,13 +44,6 @@
                     return data;
                 }
 
-                function changeSize(type)
-                {
-                    $('li.share-embed-size').removeClass('selected');
-                    $('li.' + type).addClass('selected');
-                    preview();
-                }
-
                 function preview()
                 {
                     var data = get_data();
@@ -62,10 +55,6 @@
 
 
                 $(function() {
-                    $('#button_preview').click(function(){
-                        $( "#preview" ).empty().html(get_data());
-                        return false;
-                    });
 
                     $('#button_return').click(function(){
                         var return_url = $.query.get('return_url');
@@ -78,22 +67,23 @@
                         $('#json_data').val(JSON.stringify(json_data));
                         $( "#form" ).submit();
                     });
-                    $('input[name="share-embed-size"]').click(function() {
-                        var type = $(this).val();
-                        changeSize(type);
-                        return false;
+
+                    $('li.share-embed-size').click(function() {
+                        $(this).find('input[type="radio"]').attr('checked', true);
+                        $('li.share-embed-size').removeClass('selected');
+                        $(this).addClass('selected');
+                        $('input[type="radio"][name="share-embed-size"]:checked').val();
+                        preview();
                     });
 
                     $('input[name="share-embed-size-width"]').keyup(function() {
                         $('input[name="share-embed-size-height"]').val(parseInt($(this).val() * 9 / 16));
-                        $('input[name="share-embed-size"][value="custom"]').attr('checked', true).trigger('click');
+                        preview();
                     });
                     $('input[name="share-embed-size-height"]').keyup(function() {
                         $('input[name="share-embed-size-width"]').val(parseInt($(this).val() * 16 / 9));
-                        $('input[name="share-embed-size"][value="custom"]').attr('checked', true).trigger('click');
+                        preview();
                     });
-
-                    //changeSize('default');
                 });
             })(jQuery);
             //-->
