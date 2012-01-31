@@ -1,0 +1,31 @@
+[
+  {
+    "name": "fixedNavigation",
+    "desc": {
+      "zh_TW": "固定導覽",
+      "zh_CN": "固定导览",
+      "ja_JP": "固定ナビゲーション",
+      "en_US": "Fixed Navigation"
+    },
+    "type": "select",
+    "elements": {
+      "1": {
+        "desc": {
+          "zh_TW": "開啟",
+          "zh_CN": "開啟",
+          "ja_JP": "オン",
+          "en_US": "On"
+        }
+      },
+      "": {
+        "desc": {
+          "zh_TW": "關閉",
+          "zh_CN": "关闭",
+          "ja_JP": "オフ",
+          "en_US": "Off"
+        }
+      }
+    },
+    "default": ""
+  }
+]
