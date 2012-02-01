@@ -1,4 +1,4 @@
-(function( $, d, s, id, undefined ) {
+(function( $, d, undefined ) {
     $.extend({
         pixFacebookComments: function( options ) {
             var settings = $.extend({
@@ -13,7 +13,7 @@
                     FB.init({appId: '353650924654375', status: true, cookie: true, xfbml: true});
                 };
                 $('body').append('<div id="fb-root"></div>');
-                $.getScript(document.location.protocol + '//connect.facebook.net/zh_TW/all.js');
+                $.getScript(d.location.protocol + '//connect.facebook.net/zh_TW/all.js');
                 var $div = $('<div class="fb-comments">');
                 $div.attr({
                     'data-href': window.location.href,
@@ -25,4 +25,4 @@
         }
     });
 
-})( jQuery, document, 'script', 'facebook-jssdk' );
+})( jQuery, document );
