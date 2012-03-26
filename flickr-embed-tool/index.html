@@ -38,6 +38,8 @@
 		    $.cookie('flickr_account', account, { expires: 365, path: '/' });
 		    url = flickr.generate_url('flickr.photosets.getList', {user_id: data.user.nsid});
 		    $.getJSON(url, function(data){
+                        var hint = $("<option>").attr('selected', 'selected').append('請選擇');
+                        $('#input-flickr-set').empty().append(hint);
 			$.each(data.photosets.photoset, function(k, v){
 			    var opt = $("<option>").attr('id', 'option-set-' + v.id).attr("value", v.id).append($("<span>").text(v.title._content + ' (' + v.photos + ')').html());
 			    $('#input-flickr-set').append(opt);
