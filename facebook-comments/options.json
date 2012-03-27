@@ -1,0 +1,53 @@
+[
+  {
+    "name": "num_posts",
+    "desc": {
+      "zh_TW": "留言數",
+      "zh_CN": "留言数",
+      "ja_JP": "メッセージの数",
+      "en_US": "Number of posts"
+    },
+    "type": "text",
+    "default": 5
+  },
+  {
+    "name": "width",
+    "desc": {
+      "zh_TW": "寬度",
+      "zh_CN": "宽度",
+      "ja_JP": "幅",
+      "en_US": "Width"
+    },
+    "type": "text",
+    "default": "600"
+  },
+  {
+    "name": "colorscheme",
+    "desc": {
+      "zh_TW": "色系",
+      "zh_CN": "色系",
+      "ja_JP": "カラースキーム",
+      "en_US": "Color scheme"
+    },
+    "type": "select",
+    "elements": {
+      "light": {
+        "desc": {
+          "zh_TW": "亮系",
+          "zh_CN": "亮系",
+          "en_US": "Light",
+          "ja_JP": "ライト"
+        }
+      },
+      "dark": {
+        "desc": {
+          "zh_TW": "暗系",
+          "zh_CN": "暗系",
+          "en_US": "Dark",
+          "ja_JP": "ダーク"
+        }
+      }
+    },
+    "default": "light"
+  }
+]
