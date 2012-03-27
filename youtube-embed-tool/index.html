@@ -7,6 +7,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> 
         <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
         <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
+        <link rel="stylesheet" type="text/css" href="http://vote.pixplug.in/stylesheets/reset.css?1332756723">
+        <link rel="stylesheet" type="text/css" href="../libs/css/style.css?v=d97434c3a528d20f6b5e7f14fe08629a">
 
         <script type="text/javascript">
             <!--
@@ -56,7 +58,7 @@
 
                 $(function() {
 
-                    $('#button_return').click(function(){
+                    $('#popup-submit-btn').click(function(){
                         var return_url = $.query.get('return_url');
                         var ptoken = $.query.get('pToken');
                         var addon_id = $.query.get('addon_id');
@@ -84,80 +86,98 @@
                         $('input[name="share-embed-size-width"]').val(parseInt($(this).val() * 16 / 9));
                         preview();
                     });
+
+                    $('#popup-cancel-btn').click(function() {
+                        var return_url = 'http://panel.pixnet.cc/addons/cancel';
+                        $('#form').attr('action', return_url);
+                        $( "#form" ).submit();
+                        return false;
+                    });
                 });
             })(jQuery);
             //-->
         </script>
     </head>
     <body>
-        <p>
-        <div class="share-panel refresh">
-            <table border="1">
-                <tr>
-                    <th> 輸入 youtube 網址: </th><td> <input type="text" name="url" id="url"> </td>
-                </tr>
-                <tr>
-                    <th> 選擇顯示尺寸： </th><td>
-                        <ul class="share-embed-size-list">
-                            <li class="share-embed-size default wide">
-                            <label>
-                                <input type="radio" name="share-embed-size" value="default" class="share-embed-size-radio " data-width="560" data-height="315">
-                                <span class="share-embed-size-name">560 × 315</span>
-                                <span class="share-embed-size-box default"></span>
-                            </label>
-                            </li>
-                            <li class="share-embed-size medium wide">
-                            <label>
-                                <input type="radio" name="share-embed-size" value="medium" class="share-embed-size-radio " data-width="640" data-height="360">
-                                <span class="share-embed-size-name">640 × 360</span>
-                                <span class="share-embed-size-box medium"></span>
-                            </label>
-                            </li>
-                            <li class="share-embed-size large wide">
-                            <label>
-                                <input type="radio" name="share-embed-size" value="large" class="share-embed-size-radio " data-width="853" data-height="480">
-                                <span class="share-embed-size-name">853 × 480</span>
-                                <span class="share-embed-size-box large"></span>
-                            </label>
-                            </li>
-                            <li class="share-embed-size hd720 wide">
-                            <label>
-                                <input type="radio" name="share-embed-size" value="hd720" class="share-embed-size-radio  hd" data-width="1280" data-height="720">
-                                <span class="share-embed-size-name">1280 × 720</span>
-                                <span class="share-embed-size-box hd720"></span>
-                            </label>
-                            </li>
-
-                            <li class="share-embed-size custom">
-                            <label>
-                                <input type="radio" name="share-embed-size" value="custom" class="share-embed-size-radio share-embed-size-radio-custom" data-width="-1" data-height="-1">
-                                <span class="share-embed-size-name">
-                                    自訂
-                                </span>
-                                <ul class="share-embed-customize">
-                                    <li>
+        <div id="popup-body" class="popup-body">
+            <div class="content">
+                <table class="settings-table th-large" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th><label for="url">輸入 Youtube 影片網址</label></th>
+                            <td><input type="text" name="url" id="url" maxlength="255" class="input-style input-text" value="http://"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="embadded_type">顯示</label></th>
+                            <td>
+                                <ul class="share-embed-size-list">
+                                    <li class="share-embed-size default wide">
                                     <label>
-                                        寬度：
-                                        <input type="text" class="yt-uix-form-input-text share-embed-size-custom-width" maxlength="4" name="share-embed-size-width"> px
+                                        <input type="radio" name="share-embed-size" value="default" class="share-embed-size-radio " data-width="560" data-height="315">
+                                        <span class="share-embed-size-name">560 × 315</span>
+                                        <span class="share-embed-size-box default"></span>
                                     </label>
                                     </li>
-                                    <li>
+                                    <li class="share-embed-size medium wide">
                                     <label>
-                                        高度：
-                                        <input type="text" class="yt-uix-form-input-text share-embed-size-custom-height" maxlength="4" name="share-embed-size-height"> px
+                                        <input type="radio" name="share-embed-size" value="medium" class="share-embed-size-radio " data-width="640" data-height="360">
+                                        <span class="share-embed-size-name">640 × 360</span>
+                                        <span class="share-embed-size-box medium"></span>
+                                    </label>
+                                    </li>
+                                    <li class="share-embed-size large wide">
+                                    <label>
+                                        <input type="radio" name="share-embed-size" value="large" class="share-embed-size-radio " data-width="853" data-height="480">
+                                        <span class="share-embed-size-name">853 × 480</span>
+                                        <span class="share-embed-size-box large"></span>
+                                    </label>
+                                    </li>
+                                    <li class="share-embed-size hd720 wide">
+                                    <label>
+                                        <input type="radio" name="share-embed-size" value="hd720" class="share-embed-size-radio  hd" data-width="1280" data-height="720">
+                                        <span class="share-embed-size-name">1280 × 720</span>
+                                        <span class="share-embed-size-box hd720"></span>
+                                    </label>
+                                    </li>
+
+                                    <li class="share-embed-size custom">
+                                    <label>
+                                        <input type="radio" name="share-embed-size" value="custom" class="share-embed-size-radio share-embed-size-radio-custom" data-width="-1" data-height="-1">
+                                        <span class="share-embed-size-name">
+                                            自訂
+                                        </span>
+                                        <ul class="share-embed-customize">
+                                            <li>
+                                            <label>
+                                                寬度：
+                                                <input type="text" class="yt-uix-form-input-text share-embed-size-custom-width" maxlength="4" name="share-embed-size-width"> px
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                                高度：
+                                                <input type="text" class="yt-uix-form-input-text share-embed-size-custom-height" maxlength="4" name="share-embed-size-height"> px
+                                            </label>
+                                            </li>
+                                        </ul>
                                     </label>
                                     </li>
                                 </ul>
-                            </label>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th>預覽：</th><td> <div id="preview" style="height: 480;"> </div><br><button id="button_return" class="yt-uix-button">送出</button> </td>
-            </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>預覽</th>
+                            <td style="height:200px;">
+                                <button type="submit" id="button_preview"><span>預覽</span></button>
+                                <div id="preview"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </p>
+        <div class="share-panel refresh">
+        </div>
 
         <script type="text/html" id="template"><iframe title="YouTube video player" width="${Width}" height="${Height}" src="http://www.youtube.com/embed/${YoutubeId}" frameborder="0" allowfullscreen></iframe></script>
 
@@ -166,6 +186,12 @@
             <input type="hidden" name="pToken" id="pToken" value="">
             <input type="hidden" name="json_data" id="json_data" value="">
         </form>
+        <div id="popup-footer" class="popup-footer">
+            <div id="popup-submit-box">
+                <button type="submit" id="popup-submit-btn"><span>送出</span></button>
+                <button type="button" id="popup-cancel-btn"><span>取消</span></button>
+            </div>
+        </div>
 
     </body>
 </html>
