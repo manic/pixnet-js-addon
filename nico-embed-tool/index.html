@@ -51,7 +51,9 @@
         });
 
         $('#popup-cancel-btn').click(function() {
-            document.location.href = 'http://panel.pixnet.cc/addons/cancel';
+            var return_url = 'http://panel.pixnet.cc/addons/cancel';
+            $('#form').attr('action', return_url);
+            $( "#form" ).submit();
             return false;
         });
     });
