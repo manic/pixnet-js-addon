@@ -69,8 +69,8 @@
 		$.cookie('flickr_set', id, { expires: 365, path: '/' });
 		$.each(data.photoset.photo, function(k, v){
 		    var img = $('<img>').attr('src', v.url_sq).attr('title', v.title).attr('alt', v.title).attr('border', 0);
-		    var span_img = $('<span class="data-image-url">').css('display', 'none').append(v.url_m);
-		    var span_page = $('<span class="data-page-url">').css('display', 'none').append("http://www.flickr.com/photos/" + v.pathalias + "/" + v.id);
+		    var span_img = $('<span>'.addClass('data-image-url').css('display', 'none').append(v.url_m);
+		    var span_page = $('<span>').addClass('data-page-url').css('display', 'none').append("http://www.flickr.com/photos/" + v.pathalias + "/" + v.id);
 		    var item = $('<a>').attr('class', 'photo').attr('href', '#').append(img).append(span_img).append(span_page);
 		    $('#div-photos').append(item);
 		});
