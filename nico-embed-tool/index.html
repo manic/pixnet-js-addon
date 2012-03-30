@@ -3,9 +3,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>PIXNET Addons</title>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
         <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
         <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
+        <link rel="stylesheet" type="text/css" href="http://vote.pixplug.in/stylesheets/reset.css?1332756723">
+        <link rel="stylesheet" type="text/css" href="../libs/css/style.css?v=d97434c3a528d20f6b5e7f14fe08629a">
 <script type="text/javascript">
 <!--
 (function($) {
@@ -35,7 +37,7 @@
             return false;
         });
 
-        $('#button_return').click(function() {
+        $('#popup-submit-btn').click(function() {
             var return_url = $.query.get('return_url');
             var ptoken = $.query.get('pToken');
             var addon_id = $.query.get('addon_id');
@@ -47,20 +49,44 @@
             $( "#form" ).submit();
             return false;
         });
+
+        $('#popup-cancel-btn').click(function() {
+            var return_url = 'http://panel.pixnet.cc/addons/cancel';
+            $('#form').attr('action', return_url);
+            $( "#form" ).submit();
+            return false;
+        });
     });
 })(jQuery)
 //-->
 </script>
     </head>
     <body>
-        <p>
-        輸入 NICO 動畫網址 : <input type="text" name="url" id="url"><br>
-        <input type="radio" name="embadded_type" value="info" checked="true">動畫情報
-        <input type="radio" name="embadded_type" value="player">外嵌動畫<br>
-        <button id="button_preview">預覽</button>
-        <button id="button_return" onclick="return_to_proxy()">送出</button>
-        </p>
-        <div id="preview">
+        <div id="popup-body" class="popup-body">
+            <div class="content">
+                <table class="settings-table th-large" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th><label for="url">輸入 NICO 動畫網址</label></th>
+                            <td><input type="text" name="url" id="url" maxlength="255" class="input-style input-text" value="http://"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="embadded_type">顯示</label></th>
+                            <td>
+                                <label><input type="radio" name="embadded_type" value="info" checked="true"><span>動畫情報</span></label>
+                                <label><input type="radio" name="embadded_type" value="player"><span>外嵌動畫</span></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>預覽</th>
+                            <td style="height:200px;">
+                                <button type="submit" id="button_preview"><span>預覽</span></button>
+                                <div id="preview"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <form action="" method="post" id="form">
@@ -68,6 +94,12 @@
             <input type="hidden" name="pToken" id="pToken" value="">
             <input type="hidden" name="json_data" id="json_data" value="">
         </form>
+        <div id="popup-footer" class="popup-footer">
+            <div id="popup-submit-box">
+                <button type="submit" id="popup-submit-btn"><span>送出</span></button>
+                <button type="button" id="popup-cancel-btn"><span>取消</span></button>
+            </div>
+        </div>
 
     </body>
 </html>
