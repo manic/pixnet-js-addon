@@ -21,8 +21,11 @@
         $('div.article-content').find('a img').filter(function () {
           return $(this).attr('src').match(/(pic|ext).pimg.tw.*\.(jpg|png|gif)/i);
         }).each(function () {
-          var src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
-          $(this).parents('a').attr('href', src);
+            var alink = $(this).parent(), src;
+            if (!alink.attr('href').match(/(pic|ext).pimg.tw.*\.(jpg|png|gif)/i)) {
+                src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
+                $(this).parents('a').attr('href', src);
+            }
         });
         $('div.article-content').find('a').has('img').lightBox(settings);
       });
