@@ -6,6 +6,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script> 
         <script src="../libs/js/jquery.query.min.js" type="text/javascript"></script> 
         <script src="../libs/js/json2.min.js" type="text/javascript"></script> 
+        <script src="http://libs.pixfs.net/porthole/20110504/porthole.min.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="http://vote.pixplug.in/stylesheets/reset.css?1332756723">
         <link rel="stylesheet" type="text/css" href="../libs/css/style.css?v=d97434c3a528d20f6b5e7f14fe08629a">
 <script type="text/javascript">
@@ -27,6 +28,12 @@
     }
 
     $(function(){
+        var proxy_url = $.query.get('proxy_url') + '?addon_id=' + $.query.get('addon_id') + '&pToken=' + $.query.get('pToken');
+
+        windowProxy = new Porthole.WindowProxy( proxy_url );
+        // Register an event handler to receive messages;
+        windowProxy.addEventListener(function(event) { 
+        });
         $('#button_preview').click(function() {
             var embadded_type = $( "input[name='embadded_type']:checked" ).val();
             if ( 'player' == embadded_type) {
@@ -38,22 +45,14 @@
         });
 
         $('#popup-submit-btn').click(function() {
-            var return_url = $.query.get('return_url');
-            var ptoken = $.query.get('pToken');
-            var addon_id = $.query.get('addon_id');
-            var json_data = { reply: get_data() };
-            $('#form').attr('action', return_url);
-            $('#pToken').val(ptoken);
-            $('#addon_id').val(addon_id);
-            $('#json_data').val(JSON.stringify(json_data));
-            $( "#form" ).submit();
+            var ret = $.query.get('addon_id') + "||PIXNET||" + get_data();
+            windowProxy.postMessage(ret);
             return false;
         });
 
         $('#popup-cancel-btn').click(function() {
-            var return_url = 'http://panel.pixnet.cc/addons/cancel';
-            $('#form').attr('action', return_url);
-            $( "#form" ).submit();
+            var ret = $.query.get('addon_id') + "||PIXNET||";
+            windowProxy.postMessage(ret);
             return false;
         });
     });
@@ -89,11 +88,6 @@
             </div>
         </div>
 
-        <form action="" method="post" id="form">
-            <input type="hidden" name="addon_id" id="addon_id" value="">
-            <input type="hidden" name="pToken" id="pToken" value="">
-            <input type="hidden" name="json_data" id="json_data" value="">
-        </form>
         <div id="popup-footer" class="popup-footer">
             <div id="popup-submit-box">
                 <button type="submit" id="popup-submit-btn"><span>送出</span></button>
