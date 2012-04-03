@@ -21,7 +21,7 @@
                 + '&amp;font=verdana'
                 + '&amp;colorscheme=' + settings.colorscheme
                 + '&amp;height=' + height + '" scrolling="no" frameborder="0" style="border:none; '
-                + 'overflow:hidden; width:' + settings.width
+                + 'overflow:hidden; width:' + settings.width + 'px'
                 + '; height:' + height + 'px;" allowTransparency="true"></iframe><br />';
                 if ("top" === settings.position) {
                     e.prepend( button );
