@@ -19,9 +19,9 @@
       }
       $.getScript(file_js, function (data, textStatus) {
         $('div.article-content').find('a img').filter(function () {
-          return $(this).attr('src').match(/_[stqmnbl].(jpg|png|gif)$/);
+          return $(this).attr('src').match(/(pic|ext).pimg.tw.*\.(jpg|png|gif)/i);
         }).each(function () {
-          var src = $(this).attr('src').replace(/_[stqmnbl]/i, '');
+          var src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
           $(this).parents('a').attr('href', src);
         });
         $('div.article-content').find('a').has('img').lightBox(settings);
