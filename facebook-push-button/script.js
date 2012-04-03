@@ -7,6 +7,10 @@
                 colorscheme: "light",
                 width : "600"
             }, options || {});
+            var height = 30;
+            if ("true" == settings.show_faces) {
+                height = 80;
+            }
             $( "div.article" ).each(function() {
                 var e = $(this).find("div.article-content:first");
                 var button = '<iframe src="http://www.facebook.com/plugins/like.php?href='
@@ -16,9 +20,9 @@
                 + '&amp;action=like'
                 + '&amp;font=verdana'
                 + '&amp;colorscheme=' + settings.colorscheme
-                + '&amp;height=80" scrolling="no" frameborder="0" style="border:none; '
+                + '&amp;height=' + height + '" scrolling="no" frameborder="0" style="border:none; '
                 + 'overflow:hidden; width:' + settings.width
-                + '; height:80px;" allowTransparency="true"></iframe>';
+                + '; height:' + height + 'px;" allowTransparency="true"></iframe><br />';
                 if ("top" === settings.position) {
                     e.prepend( button );
                 } else {
