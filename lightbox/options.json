@@ -27,5 +27,34 @@
       }
     },
     "default": ""
+  },
+  {
+    "name": "lightboxable",
+    "desc": {
+      "zh_TW": "選擇要特效化的類型",
+      "zh_CN": "选择要特效化的类型",
+      "ja_JP": "効果の種類を選択します",
+      "en_US": "Select the type of effects of"
+    },
+    "type": "select",
+    "elements": {
+      "all": {
+        "desc": {
+          "zh_TW": "所有附帶連結的圖片",
+          "zh_CN": "所有附带连结的图片",
+          "ja_JP": "接続されているすべてのリンク画像",
+          "en_US": "All attached link picture"
+        }
+      },
+      "photo_page": {
+        "desc": {
+          "zh_TW": "連回相簿頁的圖片",
+          "zh_CN": "连回相簿页的图片",
+          "ja_JP": "アルバムのページの絵に戻って接続",
+          "en_US": "Connect back to the picture of the album pages"
+        }
+      }
+    },
+    "default": "photo_page"
   }
 ]
