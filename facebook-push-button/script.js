@@ -14,7 +14,7 @@
             $( "div.article" ).each(function() {
                 var e = $(this).find("div.article-content:first");
                 var button = '<iframe src="http://www.facebook.com/plugins/like.php?href='
-                + encodeURI($(this).find("h2 a").attr("href")) + '&amp;layout=standard'
+                + encodeURIComponent($(this).find("h2 a").attr("href")) + '&amp;layout=standard'
                 + '&amp;show_faces=' + settings.show_faces
                 + '&amp;width=' + settings.width
                 + '&amp;action=like'
