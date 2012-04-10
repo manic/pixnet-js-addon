@@ -14,14 +14,14 @@
             $( "div.article" ).each(function() {
                 var e = $(this).find("div.article-content:first");
                 var button = '<iframe src="http://www.facebook.com/plugins/like.php?href='
-                + encodeURI($(this).find("h2 a").attr("href")) + '&amp;layout=standard'
+                + encodeURIComponent($(this).find("h2 a").attr("href")) + '&amp;layout=standard'
                 + '&amp;show_faces=' + settings.show_faces
                 + '&amp;width=' + settings.width
                 + '&amp;action=like'
                 + '&amp;font=verdana'
                 + '&amp;colorscheme=' + settings.colorscheme
                 + '&amp;height=' + height + '" scrolling="no" frameborder="0" style="border:none; '
-                + 'overflow:hidden; width:' + settings.width
+                + 'overflow:hidden; width:' + settings.width + 'px'
                 + '; height:' + height + 'px;" allowTransparency="true"></iframe><br />';
                 if ("top" === settings.position) {
                     e.prepend( button );

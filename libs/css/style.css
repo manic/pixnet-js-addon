@@ -790,7 +790,7 @@ border: 1px solid rgb(221, 221, 221); background: none repeat scroll 0% 0% white
     position:relative;
     top:1px;
 }
-#page-tabs ul li .new , 
+#page-tabs ul li .new ,
 #popup-tabs ul li .new{
 	background: url(../images/new_icon.gif) no-repeat;
 	text-indent:-9999px;
@@ -2245,8 +2245,8 @@ table.referer-table td.cell-link a:visited {
 .notifications-feed .recommend-list{
         position:relative;}
 .float-box{
-        background:#EFEFEF;     
-        position: absolute ; 
+        background:#EFEFEF;
+        position: absolute ;
         /*left:210px;
         top:80px;*/
         width: 310px;
@@ -2261,12 +2261,12 @@ table.referer-table td.cell-link a:visited {
     -webkit-border-radius:3px;
     border-radius:3px;
 }
-.float-box .more{ 
+.float-box .more{
         display:block;
         line-height:1.8em;
         text-align:right;
         padding-right:10px;
-        
+
 }
 .float-box li{
         display:block;
@@ -2280,9 +2280,9 @@ table.referer-table td.cell-link a:visited {
         width:140px;
         float:left;
         padding:3px 5px;
-} 
+}
 .float-box li a{ text-decoration:none;display: block ;}
-.float-box li img{ 
+.float-box li img{
         width:30px;
         height:30px;
         padding:2px;
@@ -2290,7 +2290,7 @@ table.referer-table td.cell-link a:visited {
         border:1px solid #CECBCE;
         float:left;
 }
-.float-box li p{ 
+.float-box li p{
         line-height:35px;
         margin-left:40px;
         font-weight:bold;
@@ -2491,7 +2491,7 @@ td#editor-td {
 .plugin-buttons-list li a:hover {
 	background:url(http://panel.pixfs.net.oasis.test.pixnet/images/blog/plugin-buttons/button-bg.png) 0px -38px repeat-x;
 }
-.plugin-buttons-list li a.active, 
+.plugin-buttons-list li a.active,
 .plugin-buttons-list li a:active {
 	margin-top:3px;
 	background:url(http://panel.pixfs.net.oasis.test.pixnet/images/blog/plugin-buttons/button-bg.png) 0px 0px repeat-x;
@@ -6607,7 +6607,7 @@ ul.user-list li div.user-avatar{
     font-weight:bold;
 }
 #popup-box .content .fb-id,
-#popup-box .content .pixnet-id { 
+#popup-box .content .pixnet-id {
     text-decoration:none;
     display:block;
     width:250px;
@@ -6743,13 +6743,13 @@ ul.user-list li div.user-avatar{
     border-radius: 3px;
  }
 table.openid-list {width:100%;}
-table.openid-list td{ 
+table.openid-list td{
     background:#f7fbff;
     padding:5px 5px 5px 9px;
 }
 table.openid-list td b{ margin:0 5px;}
 table.openid-list td input{ vertical-align:middle;}
- 
+
 #popup-box .content .common-list .recommend{
     position:absolute;
     right:0px;
@@ -8013,7 +8013,7 @@ div.popup-inner-table.sent-invitation-table th.cell-info a.close-search:hover { 
 
 div.popup-inner-table.sent-invitation-table td {        background:#f3f9ff ; color :#000 ;      }
 div.popup-inner-table.sent-invitation-table td.cell-info {      border-right: 0 ;       }
-div.popup-inner-table.sent-invitation-table th.cell-info span#count { display: inline ; position: static ; background: none ; bordeR: none ; line-height: auto ; width: auto ; float: none ; margin: 0 ; } 
+div.popup-inner-table.sent-invitation-table th.cell-info span#count { display: inline ; position: static ; background: none ; bordeR: none ; line-height: auto ; width: auto ; float: none ; margin: 0 ; }
 div.popup-inner-table.sent-invitation-table tr td.cell-img img   ,
 div.popup-inner-table.sent-invitation-table tr td.cell-info img {       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);   -moz-opacity:1; -khtml-opacity: 1;      opacity: 1;      }
 div.popup-inner-table.sent-invitation-table tr.selected td { background:#fff ;  color:#ccc ;}
@@ -8037,9 +8037,4 @@ div.popup-inner-table.authority-toggle-table tr.selected td.cell-icon img  {    
 .invite-method input {  font-family:"Arial" ;   width: 300px ;  bordeR: 1px solid #aaa ;        background:#fff ;       padding: 3px 5px 4px 5px ;      font-size: 1em ;        margin: 0 10px 10px 0 ;}
 .invite-method span.or {        display: block ;        font-weight: bold ;     color:#666 ;    font-size: 1.25em ;     background:#fafafa ;    padding: 0px 10px ;     position: absolute ;    left: 50% ;     bottom: -12px ; z-index: 9 ;    }
 .invite-method .create-url {    margin: 0 0 0 67px ;    }
- }
-in: 0 0 0 67px ;    }
-}
 .invite-method .create-url {    margin: 0 0 0 67px ;    }
- }
-in: 0 0 0 67px ;    }

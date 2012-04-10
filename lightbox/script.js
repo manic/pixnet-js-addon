@@ -9,6 +9,7 @@
         imageBlank: 'http://pic.pimg.tw/appmarket/1327917749-3598307766.gif?v=1327917754',
         txtImage: '圖片',
         txtOf: '之',
+        lightboxable: "photo_page"
       }, options || {});
       var file_css = 'http://leandrovieira.com/projects/jquery/lightbox/css/jquery.lightbox-0.5.css',
           file_js = 'http://leandrovieira.com/projects/jquery/lightbox/js/jquery.lightbox-0.5.pack.js';
@@ -19,12 +20,21 @@
       }
       $.getScript(file_js, function (data, textStatus) {
         $('div.article-content').find('a img').filter(function () {
-          return $(this).attr('src').match(/(pic|ext).pimg.tw.*\.(jpg|png|gif)/i);
+          return $(this).attr('src').match(/\.(jpg|png|gif)/i);
         }).each(function () {
-          var src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
-          $(this).parents('a').attr('href', src);
+            var alink = $(this).parent(), src;
+            src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
+            if (alink.attr('href').match(/\.(jpg|png|gif)/i)) { // 連結本身是原圖的，就只是加上 LightBox class
+                alink.addClass('pixLightBox');
+            } else if (settings.lightboxable == 'photo_page') {
+                if (alink.attr('href').match(/album\/photo/i)) {  // 只有連回相簿頁的圖片才加連結
+                  alink.attr('href', src).addClass('pixLightBox');
+                }
+            } else {
+              alink.attr('href', src).addClass('pixLightBox');
+            }
         });
-        $('div.article-content').find('a').has('img').lightBox(settings);
+        $('div.article-content').find('a.pixLightBox').has('img').lightBox(settings);
       });
     }
   });
