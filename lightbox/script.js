@@ -20,7 +20,7 @@
       }
       $.getScript(file_js, function (data, textStatus) {
         $('div.article-content').find('a img').filter(function () {
-          return $(this).attr('src').match(/(pic|ext).pimg.tw.*\.(jpg|png|gif)/i);
+          return $(this).attr('src').match(/\.(jpg|png|gif)/i);
         }).each(function () {
             var alink = $(this).parent(), src;
             src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
