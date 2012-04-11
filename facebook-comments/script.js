@@ -16,7 +16,7 @@
                 $.getScript(d.location.protocol + '//connect.facebook.net/zh_TW/all.js');
                 var $div = $('<div class="fb-comments">');
                 $div.attr({
-                    'data-href': w.location.href,
+                    'data-href': $('div.article').find('h2 a').attr('href'),
                     'data-num-posts': settings.num_posts,
                     'data-width': settings.width
                 });
