@@ -22,7 +22,7 @@
         $('div.article-content').find('a img').filter(function () {
           return $(this).attr('src').match(/\.(jpg|png|gif)/i);
         }).each(function () {
-            var alink = $(this).parent(), src;
+            var alink = $(this).parents('a'), src;
             src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
             if (alink.attr('href').match(/\.(jpg|png|gif)/i)) { // 連結本身是原圖的，就只是加上 LightBox class
                 alink.addClass('pixLightBox');
