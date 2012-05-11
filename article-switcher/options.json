@@ -1,0 +1,60 @@
+[
+  {
+    "name": "mode",
+    "desc": {
+      "zh_TW": "模式",
+      "zh_CN": "模式",
+      "ja_JP": "モード",
+      "en_US": "Mode"
+    },
+    "type": "select",
+    "elements": {
+      "two-side": {
+        "desc": {
+          "zh_TW": "文章兩旁",
+          "zh_CN": "文章兩旁",
+          "ja_JP": "記事の両側",
+          "en_US": "Two Side"
+        }
+      },
+      "below-content": {
+        "desc": {
+          "zh_TW": "文章底下",
+          "zh_CN": "文章底下",
+          "ja_JP": "記事の下",
+          "en_US": "Below Content"
+        }
+      }
+    },
+    "default": "two-side"
+  },
+  {
+    "name": "default_css",
+    "desc": {
+      "zh_TW": "載入預設CSS",
+      "zh_CN": "载入预设CSS",
+      "ja_JP": "デフォルトのCSSを読み込む",
+      "en_US": "Load default CSS"
+    },
+    "type": "select",
+    "elements": {
+      "on": {
+        "desc": {
+          "zh_TW": "是",
+          "zh_CN": "是",
+          "ja_JP": "はい",
+          "en_US": "Yes"
+        }
+      },
+      "off": {
+        "desc": {
+          "zh_TW": "否，我要自行補上CSS",
+          "zh_CN": "否，我要自行補上CSS",
+          "ja_JP": "いいえ、私は独自のCSSを作りたい",
+          "en_US": "No, I will use custom css."
+        }
+      }
+    },
+    "default": "on"
+  }
+]
