@@ -11,8 +11,8 @@
         txtOf: '之',
         lightboxable: "photo_page"
       }, options || {});
-      var file_css = 'http://leandrovieira.com/projects/jquery/lightbox/css/jquery.lightbox-0.5.css',
-          file_js = 'http://leandrovieira.com/projects/jquery/lightbox/js/jquery.lightbox-0.5.pack.js';
+      var file_css = 'http://libs.pixfs.net/jquery.lightbox/0.5/jquery.lightbox.css',
+          file_js = 'http://libs.pixfs.net/jquery.lightbox/0.5/jquery.lightbox.pack.js';
       if (document.createStyleSheet) {
         document.createStyleSheet(file_css);
       } else {
@@ -22,7 +22,7 @@
         $('div.article-content').find('a img').filter(function () {
           return $(this).attr('src').match(/\.(jpg|png|gif)/i);
         }).each(function () {
-            var alink = $(this).parent(), src;
+            var alink = $(this).parents('a'), src;
             src = $(this).attr('src').replace(/_[stqmnbl]/i, '_l');
             if (alink.attr('href').match(/\.(jpg|png|gif)/i)) { // 連結本身是原圖的，就只是加上 LightBox class
                 alink.addClass('pixLightBox');
