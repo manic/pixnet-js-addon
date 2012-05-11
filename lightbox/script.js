@@ -11,8 +11,8 @@
         txtOf: '之',
         lightboxable: "photo_page"
       }, options || {});
-      var file_css = 'http://leandrovieira.com/projects/jquery/lightbox/css/jquery.lightbox-0.5.css',
-          file_js = 'http://leandrovieira.com/projects/jquery/lightbox/js/jquery.lightbox-0.5.pack.js';
+      var file_css = 'http://libs.pixfs.net/jquery.lightbox/0.5/jquery.lightbox.css',
+          file_js = 'http://libs.pixfs.net/jquery.lightbox/0.5/jquery.lightbox.pack.js';
       if (document.createStyleSheet) {
         document.createStyleSheet(file_css);
       } else {
