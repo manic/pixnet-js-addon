@@ -94,3 +94,92 @@
   word-wrap: break-word;
 }
 
+
+
+
+
+
+#pix_article_switch_content   {
+    text-align:left;
+    margin:20px 0;
+    overflow:hidden;
+    zoom:1;
+    font-size:12px;
+    clear:both;
+}
+
+#pix_article_switch_content h5 {
+    font-weight:bold;
+    margin:0;
+    padding:0;
+    opacity:0.6;
+}
+
+#pix_article_switch_content ul {
+    margin:10px 0;
+    overflow:hidden;
+    float:left;
+    zoom:1;
+    height:180px;
+    list-style:none;
+}
+
+#pix_article_switch_content ul li  {
+    float: left;
+    text-align:center;
+    width:113px;
+    height:180px;
+    border:none;
+    cursor: pointer;
+    list-style:none;
+}
+
+#pix_article_switch_content ul li a {
+    display:block;
+    width:112px;
+    height:170px;
+    padding-top:6px;
+    border-left:1px solid #CCC;
+}
+
+#pix_article_switch_content ul li a:hover {
+    background:#EEE;
+    color:#666;
+}
+
+#pix_article_switch_content ul li a span.article-text{
+    display:block;
+    text-align:left;
+    margin:5px 10px 0 10px;
+    line-height:20px;
+    height:60px;
+    overflow:hidden;
+    text-decoration:none;
+}
+#pix_article_switch_content ul li a div.article-image-box {
+    width:92px;
+    height:92px;
+    border:1px solid #aaa;
+    margin:0 auto;
+    position:relative;
+}
+#pix_article_switch_content ul li a img.article-image{
+    width:90px;
+    height:90px;
+    padding:1px;
+    background:white;
+}
+
+#pix_article_switch_content ul li a div.article-image-box .partner-logo {
+    display:block;
+    background:white;
+    position:absolute;
+    bottom:1px;
+    left:1px;
+    width:88px;
+    height:20px;
+    padding:0 2px 0 0;
+    text-align:right;
+    line-height:20px;
+    vertical-align:middle;
+}
