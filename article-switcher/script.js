@@ -22,8 +22,31 @@
     pixArticleSwitcher: function (options) {
       var settings = $.extend({
         mode: "two-side",
-        default_css: "on"
+        default_css: "on",
+        color: "black"
       }, options || {});
+      var arrows = {
+          "black": {
+              "left": "http://pic.pimg.tw/appmarket/1337245961-1958403486.png?v=1337245962",
+              "right": "http://pic.pimg.tw/appmarket/1337245961-1895570752.png",
+              "color": "#969597"
+          },
+          "pink": {
+              "left": "http://pic.pimg.tw/appmarket/1337245961-4175304074.png",
+              "right": "http://pic.pimg.tw/appmarket/1337245961-1557330822.png",
+              "color": "#f19ec2"
+          },
+          "yellow": {
+              "left": "http://pic.pimg.tw/appmarket/1337245961-4175304074.png",
+              "right": "http://pic.pimg.tw/appmarket/1337245961-1235054658.png",
+              "color": "#FFD4A7"
+          },
+          "blue": {
+              "left": "http://pic.pimg.tw/appmarket/1337245961-522079231.png",
+              "right": "http://pic.pimg.tw/appmarket/1337245961-849513824.png",
+              "color": "#ABDCFF"
+          }
+      };
       if ('on' == settings.default_css) {
           var file_css = 'http://tech.manic.tw/pixnet-js-addon/article-switcher/article_switcher.css';
           if (document.createStyleSheet) {
@@ -45,6 +68,11 @@
         if ('two-side' == settings.mode) {
             $('body').append('<div id="pix_article_switch"><ul>' + li_prev + li_next + '</ul></div>');
             $('#pix_article_switch').width(container_width).css('margin-left', '-' + container_width / 2 + 'px');
+            $('#pix_article_switch .prev_article .title_display').css('background-image', "url(" + arrows[settings.color]['left'] + ")").css('border-color', arrows[settings.color]['color']);
+            $('#pix_article_switch .prev_article span').css('background-image', 'url(' + arrows[settings.color]['left'] + ')');
+            $('#pix_article_switch .next_article .title_display').css('background-image', "url(" + arrows[settings.color]['right'] + ")").css('border-color', arrows[settings.color]['color']);
+            $('#pix_article_switch .next_article span').css('background-image', 'url(' + arrows[settings.color]['right'] + ')');
+            $('#pix_article_switch .date').css('background-color', arrows[settings.color]['color']);
         } else {
             $('div.article-content').append('<div id="pix_article_switch_content"><ul>' + li_prev + li_next + '</ul></div>');
         }
