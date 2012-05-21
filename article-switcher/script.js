@@ -18,6 +18,16 @@
     return ret;
   }
 
+  function generateSideLiHtml($el)
+  {
+    if ($el.data('thumb')) {
+        image = '<img src="' + $el.data('thumb') + '" width="90" height="90" class="article-image">';
+    }
+    ret = '<li><a href="' + $el.attr('href') + '"><div class="article-image-box">' + image + '</div><span class="article-text">' + $el.text() + '</span></a></li>';
+    return ret;
+  }
+
+
   $.extend({
     pixArticleSwitcher: function (options) {
       var settings = $.extend({
@@ -74,7 +84,7 @@
             $('#pix_article_switch .next_article span').css('background-image', 'url(' + arrows[settings.color]['right'] + ')');
             $('#pix_article_switch .date').css('background-color', arrows[settings.color]['color']);
         } else {
-            $('div.article-content').append('<div id="pix_article_switch_content"><ul>' + li_prev + li_next + '</ul></div>');
+            $('div.article-content').append('<div id="pix_article_switch_content"><h5>上一篇文章與下一篇文章</h5><ul>' + generateSideLiHtml($prev) + generateSideLiHtml($next) + '</ul></div>');
         }
       });
     }
