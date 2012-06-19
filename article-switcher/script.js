@@ -42,8 +42,8 @@
               "color": "#969597"
           },
           "pink": {
-              "left": "http://pic.pimg.tw/appmarket/1337245961-4175304074.png",
-              "right": "http://pic.pimg.tw/appmarket/1337245961-1557330822.png",
+              "left": "http://channel.pixnet.net/lovely/images/arrow-filter-left.png",
+              "right": "http://channel.pixnet.net/lovely/images/arrow-filter-right.png",
               "color": "#f19ec2"
           },
           "yellow": {
@@ -55,6 +55,11 @@
               "left": "http://pic.pimg.tw/appmarket/1337245961-522079231.png",
               "right": "http://pic.pimg.tw/appmarket/1337245961-849513824.png",
               "color": "#ABDCFF"
+          },
+          "white": {
+              "left": "http://pic.pimg.tw/appmarket/1337245961-609852530.png",
+              "right": "http://pic.pimg.tw/appmarket/1337245961-1557330822.png",
+              "color": "#f8f7f8"
           }
       };
       if ('on' == settings.default_css) {
