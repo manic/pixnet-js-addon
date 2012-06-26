@@ -1,0 +1,237 @@
+[
+  {
+    "name": "position",
+    "desc": {
+      "zh_TW": "位置",
+      "zh_CN": "位置",
+      "ja_JP": "ロケーション",
+      "en_US": "Location"
+    },
+    "type": "select",
+    "elements": {
+      "top": {
+        "desc": {
+          "zh_TW": "顯示於文章上面",
+          "zh_CN": "显示于文章上面",
+          "ja_JP": "資料上記の",
+          "en_US": "Shown in the article above"
+        }
+      },
+      "bottom": {
+        "desc": {
+          "zh_TW": "顯示於文章下面",
+          "zh_CN": "显示于文章下面",
+          "ja_JP": "資料以下のように",
+          "en_US": "Shown in the article below"
+        }
+      },
+      "both": {
+        "desc": {
+          "zh_TW": "文章上面下面都顯示",
+          "zh_CN": "文章上面下面都顯示",
+          "ja_JP": "文章上面下面都顯示",
+          "en_US": "文章上面下面都顯示"
+        }
+      }
+    },
+    "default": "top"
+  },
+  {
+    "name": "enable_info",
+    "desc": { "zh_TW": "開頭文字", "zh_CN": "開頭文字", "ja_JP": "アバター", "en_US": "Show Faces" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "enable_murmur",
+    "desc": { "zh_TW": "MURMUR", "zh_CN": "MURMUR", "ja_JP": "MURMUR", "en_US": "MURMUR" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "enable_facebook_share",
+    "desc": { "zh_TW": "Facebook Share", "zh_CN": "Facebook Share", "ja_JP": "Facebook Share", "en_US": "Facebook Share" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "enable_plurk",
+    "desc": { "zh_TW": "Plurk", "zh_CN": "Plurk", "ja_JP": "Plurk", "en_US": "Plurk" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "enable_twitter",
+    "desc": { "zh_TW": "Twitter", "zh_CN": "Twitter", "ja_JP": "Twitter", "en_US": "Twitter" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "enable_funp",
+    "desc": { "zh_TW": "Funp", "zh_CN": "Funp", "ja_JP": "Funp", "en_US": "Funp" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "enable_google_plus",
+    "desc": { "zh_TW": "Google Plus", "zh_CN": "Google Plus", "ja_JP": "Google Plus", "en_US": "Google Plus" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "g_plus_size",
+    "desc": { "zh_TW": "Google Plus大小", "zh_CN": "Google Plus大小", "ja_JP": "Google Plus大小", "en_US": "Google Plus大小" },
+    "type": "select",
+    "elements": {
+      "small": { "desc": { "zh_TW": "小", "zh_CN": "小", "ja_JP": "Small", "en_US": "Small" } },
+      "standard": { "desc": { "zh_TW": "標準", "zh_CN": "標準", "ja_JP": "Standard", "en_US": "Standard" } },
+      "medium": { "desc": { "zh_TW": "中", "zh_CN": "中", "ja_JP": "Medium", "en_US": "Medium" } },
+      "tall": { "desc": { "zh_TW": "長", "zh_CN": "長", "ja_JP": "Tall", "en_US": "Tall" } }
+    },
+    "default": "medium"
+  },
+  {
+    "name": "g_plus_annotation",
+    "desc": { "zh_TW": "Google Plus Annotation", "zh_CN": "Google Plus Annotation", "ja_JP": "Google Plus Annotation", "en_US": "Google Plus Annotation" },
+    "type": "select",
+    "elements": {
+      "standard": { "desc": { "zh_TW": "說明圖示", "zh_CN": "說明圖示", "ja_JP": "Standard", "en_US": "Standard" } },
+      "inline": { "desc": { "zh_TW": "內置", "zh_CN": "內置", "ja_JP": "Inline", "en_US": "Inline" } },
+      "none": { "desc": { "zh_TW": "無", "zh_CN": "無", "ja_JP": "None", "en_US": "None" } }
+    },
+    "default": "none"
+  },
+  {
+    "name": "enable_facebook_like",
+    "desc": { "zh_TW": "Facebook Like", "zh_CN": "Facebook Like", "ja_JP": "Facebook Like", "en_US": "Facebook Like" },
+    "type": "select",
+    "elements": {
+      "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
+      "false": { "desc": { "zh_TW": "關閉", "zh_CN": "关闭", "ja_JP": "オフ", "en_US": "Off" } }
+    },
+    "default": "true"
+  },
+  {
+    "name": "fb_like_layout",
+    "desc": {
+      "zh_TW": "Facebook Like 類型",
+      "zh_CN": "Facebook Like 類型",
+      "ja_JP": "Facebook Like Layout",
+      "en_US": "Facebook Like Layout"
+    },
+    "type": "select",
+    "elements": {
+      "standard": {
+        "desc": {
+          "zh_TW": "標準",
+          "zh_CN": "標準",
+          "en_US": "Standard",
+          "ja_JP": "Standard"
+        }
+      },
+      "button_count": {
+        "desc": {
+          "zh_TW": "Button Count",
+          "zh_CN": "Button Count",
+          "en_US": "Button Count",
+          "ja_JP": "Button Count"
+        }
+      },
+      "box_count": {
+        "desc": {
+          "zh_TW": "Box Count",
+          "zh_CN": "Box Count",
+          "en_US": "Box Count",
+          "ja_JP": "Box Count"
+        }
+      }
+    },
+    "default": "button_count"
+  },
+  {
+    "name": "fb_like_show_faces",
+    "desc": {
+      "zh_TW": "Facebook Like 使用者頭像",
+      "zh_CN": "Facebook Like 使用者頭像",
+      "ja_JP": "アバター",
+      "en_US": "Show Faces"
+    },
+    "type": "select",
+    "elements": {
+      "true": {
+        "desc": {
+          "zh_TW": "開啟",
+          "zh_CN": "開啟",
+          "ja_JP": "オン",
+          "en_US": "On"
+        }
+      },
+      "false": {
+        "desc": {
+          "zh_TW": "關閉",
+          "zh_CN": "关闭",
+          "ja_JP": "オフ",
+          "en_US": "Off"
+        }
+      }
+    },
+    "default": "false"
+  },
+  {
+    "name": "fb_like_colorscheme",
+    "desc": {
+      "zh_TW": "Facebook Like 色系",
+      "zh_CN": "Facebook Like 色系",
+      "ja_JP": "カラースキーム",
+      "en_US": "Color scheme"
+    },
+    "type": "select",
+    "elements": {
+      "light": {
+        "desc": {
+          "zh_TW": "亮系",
+          "zh_CN": "亮系",
+          "en_US": "Light",
+          "ja_JP": "ライト"
+        }
+      },
+      "dark": {
+        "desc": {
+          "zh_TW": "暗系",
+          "zh_CN": "暗系",
+          "en_US": "Dark",
+          "ja_JP": "ダーク"
+        }
+      }
+    },
+    "default": "light"
+  }
+]

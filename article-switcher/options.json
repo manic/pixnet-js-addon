@@ -56,5 +56,58 @@
       }
     },
     "default": "on"
+  },
+  { 
+    "name": "color",
+    "desc": {
+      "zh_TW": "顏色",
+      "zh_CN": "顏色",
+      "ja_JP": "カラー",
+      "en_US": "Color"
+    },
+    "type" : "select",
+    "elements": {
+      "black": {
+        "desc": {
+          "zh_TW": "黑",
+          "zh_CN": "黑",
+          "ja_JP": "ブラック",
+          "en_US": "Black"
+        }
+      },
+      "white": {
+        "desc": {
+          "zh_TW": "白",
+          "zh_CN": "白",
+          "ja_JP": "白",
+          "en_US": "White"
+        }
+      },
+      "pink": {
+        "desc": {
+          "zh_TW": "粉紅",
+          "zh_CN": "粉紅",
+          "ja_JP": "ピンク",
+          "en_US": "Pink"
+        }
+      },
+      "yellow": {
+        "desc": {
+          "zh_TW": "黃",
+          "zh_CN": "黃",
+          "ja_JP": "黃",
+          "en_US": "Yellow"
+        }
+      },
+      "blue": {
+        "desc": {
+          "zh_TW": "藍",
+          "zh_CN": "藍",
+          "ja_JP": "藍",
+          "en_US": "Blue"
+        }
+      }
+    },
+    "default": "black"
   }
 ]
