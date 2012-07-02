@@ -55,7 +55,7 @@
                 var $content = $('div.article-content');
 
                 var murmur = '<a title="分享至MURMUR" data-bookmark-type="murmur"><img src="//s.pixfs.net/blog/images/common/murmur.gif" title="MURMUR" alt="MURMUR" border="0" style="width:20px;height:20px;"></a>&nbsp;';
-                var facebook_share = '<a title="分享至facebook" data-bookmark-type="facebook_share"><img src="//s.pixfs.net/blog/images/common/facebook.gif" title="facebook" alt="facebook" border="0" style="width:18px;height:20px;"></a>&nbsp;';
+                var facebook_share = '<a title="分享至facebook" data-bookmark-type="facebook"><img src="//s.pixfs.net/blog/images/common/facebook.gif" title="facebook" alt="facebook" border="0" style="width:18px;height:20px;"></a>&nbsp;';
                 var plurk = '<a title="分享至PLURK" data-bookmark-type="plurk"><img src="//s.pixfs.net/blog/images/common/plurk.gif" title="PLURK" alt="PLURK" border="0" style="width:18px;height:20px;"></a>&nbsp;';
                 var twitter = '<a title="分享至twitter" data-bookmark-type="twitter"><img src="//s.pixfs.net/blog/images/common/twitter.gif" title="twitter" alt="twitter" border="0" style="width:18px;height:20px;"></a>&nbsp;';
                 var funp = '<iframe width="70" height="20" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" src="http://funp.com/tools/buttoniframe.php?s=24&amp;url=' + encode_href + '"></iframe>&nbsp;';
@@ -66,16 +66,18 @@
                 $(document).delegate('a[data-bookmark-type]', 'click', function() {
                     var url = '', bookmark_type = $(this).data('bookmark-type'),
                     title = d.title.split('@')[0].replace(/([\s]*$)/g,''),
-                    href = $('div.article').find('h2 a').attr('href');
+                    href = $('div.article').find('h2 a').attr('href'),
+                    encode_href = encodeURIComponent(href);
                     if ('murmur' == bookmark_type) {
-                        url = "http://murmur.tw/?sharelink=" + encodeURIComponent(href);
-                    } else if ('facebook_share' == bookmark_type) {
-                        url = 'http://www.facebook.com/share.php?u='+encodeURIComponent(href)+'&t='+encodeURIComponent(title);
+                        url = "http://murmur.tw/?sharelink=" + encode_href;
+                    } else if ('facebook' == bookmark_type) {
+                        url = 'http://www.facebook.com/share.php?u='+ encode_href +'&t='+encodeURIComponent(title);
                     } else if ('plurk' == bookmark_type) {
-                        url = 'http://www.plurk.com/?qualifier=shares&status='+encodeURIComponent(href);
+                        url = 'http://www.plurk.com/?qualifier=shares&status='+ encode_href;
                     } else if ('twitter' == bookmark_type) {
                         url = 'http://twitter.com/?status='+encodeURIComponent(href +' ('+ title + ')');
                     }
+                    $.get('/blog/sharelog?url=' + encode_href + '&service=' + bookmark_type)
                     void(open(url));
                 });
 
