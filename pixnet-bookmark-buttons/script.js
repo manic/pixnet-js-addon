@@ -23,22 +23,19 @@
             // load Google PlusScript
             window.___gcfg = {lang: 'zh-TW'};
 
-            function generate_facebook_html(settings)
+            function generate_facebook_html(settings, encode_href)
             {
                 var width = 90;
+                var height = 21;
                 if ('box_count' == settings.fb_like_layout) {
                     width = 90;
+                    height = 60;
                 } else if ('standard' == settings.fb_like_layout) {
                     width = 450;
                 } else if ('button_count' == settings.fb_like_layout) {
                     width = 90;
                 }
-                var facebook_like = '<div class="fb-like" data-send="false' +
-                '" data-layout="' + settings.fb_like_layout +
-                '" data-width="' + width +
-                '" data-show-faces="' + settings.fb_like_show_faces +
-                '" data-colorscheme="' + settings.fb_like_colorscheme +
-                '"></div>&nbsp;';
+                var facebook_like = "<iframe src=\" http://www.facebook.com/plugins/like.php?href=" + encode_href +"&amp;layout=" + settings.fb_like_layout + "&amp;show_faces=" + settings.fb_like_show_faces + "&amp;width=" + width + "&amp;action=like&amp;font=arial&amp;colorscheme=" + settings.fb_like_colorscheme + "&amp;height=" + height + "\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:" + width + "px; height:" + height + "px;\" allowTransparency=\"true\"></iframe>";
                 return facebook_like;
             }
 
@@ -61,7 +58,7 @@
                 var funp = '<iframe width="70" height="20" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" src="http://funp.com/tools/buttoniframe.php?s=24&amp;url=' + encode_href + '"></iframe>&nbsp;';
                 var google_plus = '<g:plusone size="' + settings.g_plus_size +
                 '" annotation="' + settings.g_plus_annotation + '"></g:plusone>&nbsp;';
-                var facebook_like = generate_facebook_html(settings);
+                var facebook_like = generate_facebook_html(settings, encode_href);
 
                 $(document).delegate('a[data-bookmark-type]', 'click', function() {
                     var url = '', bookmark_type = $(this).data('bookmark-type'),
@@ -77,7 +74,7 @@
                     } else if ('twitter' == bookmark_type) {
                         url = 'http://twitter.com/?status='+encodeURIComponent(href +' ('+ title + ')');
                     }
-                    $.get('/blog/sharelog?url=' + encode_href + '&service=' + bookmark_type)
+                    //$.get('/blog/sharelog?url=' + encode_href + '&service=' + bookmark_type)
                     void(open(url));
                 });
 
