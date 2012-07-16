@@ -49,7 +49,6 @@
                 var href = $('div.article').find('h2 a').attr('href');
                 var encode_href = encodeURIComponent(href);
                 var ret_html = '';
-                var $content = $('div.article-content');
 
                 var murmur = '<a title="分享至MURMUR" data-bookmark-type="murmur"><img src="//s.pixfs.net/blog/images/common/murmur.gif" title="MURMUR" alt="MURMUR" border="0" style="width:20px;height:20px;"></a>&nbsp;';
                 var facebook_share = '<a title="分享至facebook" data-bookmark-type="facebook"><img src="//s.pixfs.net/blog/images/common/facebook.gif" title="facebook" alt="facebook" border="0" style="width:18px;height:20px;"></a>&nbsp;';
@@ -121,12 +120,12 @@
 
                 ret_html = '<div class="bookmark">' + ret_html + '</div>';
                 if ("top" == settings.position) {
-                    $content.prepend( ret_html );
+                    $(ret_html).insertBefore('div.article-content');
                 } else if ('bottom' == settings.position) {
-                    $content.append( ret_html );
+                    $(ret_html).insertAfter('div.article-content');
                 } else {
-                    $content.prepend( ret_html );
-                    $content.append( ret_html );
+                    $(ret_html).insertBefore('div.article-content');
+                    $(ret_html).insertAfter('div.article-content');
                 }
             });
         }
