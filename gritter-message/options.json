@@ -1,0 +1,60 @@
+[
+  {
+    "name": "panel",
+    "desc": {
+      "zh_TW": "管理廣播訊息",
+      "zh_CN": "管理廣播訊息",
+      "ja_JP": "Panel",
+      "en_US": "Panel"
+    },
+    "type": "link",
+    "href": "http://vote.pixplug.in/panel/gritter_messages",
+    "text": "管理介面",
+    "target": "_blank"
+  },
+  {
+    "name": "position",
+    "desc": {
+      "zh_TW": "位置",
+      "zh_CN": "位置",
+      "ja_JP": "Position",
+      "en_US": "Position"
+    },
+    "type": "select",
+    "elements": {
+      "top-right": {
+        "desc": {
+          "zh_TW": "右－上",
+          "zh_CN": "右－上",
+          "ja_JP": "Top-Right",
+          "en_US": "Top-Right"
+        }
+      },
+      "bottom-right": {
+        "desc": {
+          "zh_TW": "右－下",
+          "zh_CN": "右－下",
+          "ja_JP": "Bottom-Right",
+          "en_US": "Bottom-Right"
+        }
+      },
+      "top-left": {
+        "desc": {
+          "zh_TW": "左－上",
+          "zh_CN": "左－上",
+          "ja_JP": "Top-Left",
+          "en_US": "Top-Left"
+        }
+      },
+      "bottom-left": {
+        "desc": {
+          "zh_TW": "左－下",
+          "zh_CN": "左－下",
+          "ja_JP": "Bottom-Left",
+          "en_US": "Bottom-Left"
+        }
+      }
+    },
+    "default": "top-right"
+  }
+]
