@@ -47,14 +47,16 @@
             {
                 $.getScript(file_js, function (data, textStatus) {
                     $.extend($.gritter.options, {
-                        position: settings.position
+                        position: settings.position,
+                        time: parseInt(settings.time)
                     });
                     main();
                 });
             }
 
             var settings = $.extend({
-                position: "top-right"
+                position: "top-right",
+                time: 7000
             }, options || {});
 
             var file_css = 'http://libs.pixfs.net/jquery-plugins/gritter/1.7.4/jquery.gritter.css?v=4',

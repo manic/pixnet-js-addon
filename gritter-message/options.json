@@ -9,7 +9,7 @@
     },
     "type": "link",
     "href": "http://vote.pixplug.in/panel/gritter_messages",
-    "text": "管理介面",
+    "text": "訊息新增編輯管理介面",
     "target": "_blank"
   },
   {
@@ -56,5 +56,57 @@
       }
     },
     "default": "top-right"
+  },
+  {
+    "name": "time",
+    "desc": {
+      "zh_TW": "顯示時間",
+      "zh_CN": "顯示時間",
+      "ja_JP": "Time",
+      "en_US": "Time"
+    },
+    "type": "select",
+    "elements": {
+      "3000": {
+        "desc": "3"
+      },
+      "4000": {
+        "desc": "4"
+      },
+      "5000": {
+        "desc": "5"
+      },
+      "6000": {
+        "desc": "6"
+      },
+      "7000": {
+        "desc": "7"
+      },
+      "8000": {
+        "desc": "8"
+      },
+      "9000": {
+        "desc": "9"
+      },
+      "10000": {
+        "desc": "10"
+      },
+      "11000": {
+        "desc": "11"
+      },
+      "12000": {
+        "desc": "12"
+      },
+      "13000": {
+        "desc": "13"
+      },
+      "14000": {
+        "desc": "14"
+      },
+      "15000": {
+        "desc": "15"
+      }
+    },
+    "default": "7000"
   }
 ]
