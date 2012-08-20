@@ -1,0 +1,69 @@
+[
+  {
+    "type": "radio",
+    "name": "blog_relatedarticle",
+    "disabled": "isVIP",
+    "default": "site",
+    "desc": {
+      "zh_TW": "相關文章顯示選項"
+        },
+    "elements": {
+      "site": {
+        "desc": {
+          "zh_TW": "顯示全站相關的文章"
+                }
+            },
+      "user": {
+        "desc":{
+          "zh_TW": "顯示自己相關的文章"
+                }
+            }
+        }
+    },
+  {
+    "type":"radio",
+    "name":"blog_relatedarticleshow",
+        "default":"post",
+        "desc":{
+            "zh_TW":"相關文章顯示位置"
+        },
+        "elements":{
+            "post": {
+                "desc":{
+                    "zh_TW":"僅單篇文章頁"
+                }
+            },
+            "page-with-post": {
+                "desc":{
+                    "zh_TW":"部落格首頁及單篇文章頁"
+                }
+            }
+        }
+    },
+    {
+        "type":"radio",
+        "name":"blog_relatedtemplate",
+        "default":"system",
+        "desc":{
+            "zh_TW":"相關文章排版模式"
+        },
+        "elements":{
+            "system": {
+                "desc":{
+                    "zh_TW":"依系統判定"
+                }
+            },
+            "box": {
+                "desc":{
+                    "zh_TW":"數張縮圖"
+                }
+            },
+            "list": {
+                "desc":{
+                    "zh_TW":"單張縮圖動態切換"
+                }
+            }
+        }
+    }
+]
+
