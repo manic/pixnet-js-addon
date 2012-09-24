@@ -6,6 +6,9 @@
                 blog_relatedarticleshow: "post",
                 blog_relatedtemplate: "system"
             }, options || {});
+            if (!settings.blog_relatedarticle) settings.blog_relatedarticle = 'site';
+            if (!settings.blog_relatedarticleshow) settings.blog_relatedarticleshow = 'post';
+            if (!settings.blog_relatedtemplate) settings.blog_relatedtemplate = 'system';
             if ( !window.location.href.match(/blog\/post/) && "post" == settings.blog_relatedarticleshow )  return;
             $.getScript('//s.pixfs.net/blog/related.min.js', function(){
                 if ($('meta@[name=generator]').attr('content') == 'PChoc' && pix) {
