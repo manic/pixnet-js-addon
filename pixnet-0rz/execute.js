@@ -1,0 +1,1 @@
+jQuery.pix0rz(#{OPTION});

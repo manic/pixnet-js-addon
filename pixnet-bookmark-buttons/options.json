@@ -28,7 +28,7 @@
       "both": {
         "desc": {
           "zh_TW": "文章上面下面都顯示",
-          "zh_CN": "文章上面下面都顯示",
+          "zh_CN": "文章上面下面都显示",
           "ja_JP": "文章上面下面都顯示",
           "en_US": "文章上面下面都顯示"
         }
@@ -47,8 +47,8 @@
     "default": "true"
   },
   {
-    "name": "enable_murmur",
-    "desc": { "zh_TW": "MURMUR", "zh_CN": "MURMUR", "ja_JP": "MURMUR", "en_US": "MURMUR" },
+    "name": "enable_headlines",
+    "desc": { "zh_TW": "7Headlines", "zh_CN": "7Headlines", "ja_JP": "7Headlines", "en_US": "7Headlines" },
     "type": "select",
     "elements": {
       "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
@@ -58,7 +58,7 @@
   },
   {
     "name": "enable_facebook_share",
-    "desc": { "zh_TW": "Facebook Share", "zh_CN": "Facebook Share", "ja_JP": "Facebook Share", "en_US": "Facebook Share" },
+    "desc": { "zh_TW": "FB Share", "zh_CN": "FB Share", "ja_JP": "FB Share", "en_US": "FB Share" },
     "type": "select",
     "elements": {
       "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
@@ -131,7 +131,7 @@
   },
   {
     "name": "enable_facebook_like",
-    "desc": { "zh_TW": "Facebook Like", "zh_CN": "Facebook Like", "ja_JP": "Facebook Like", "en_US": "Facebook Like" },
+    "desc": { "zh_TW": "FB Like", "zh_CN": "FB Like", "ja_JP": "FB Like", "en_US": "FB Like" },
     "type": "select",
     "elements": {
       "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
@@ -142,10 +142,10 @@
   {
     "name": "fb_like_layout",
     "desc": {
-      "zh_TW": "Facebook Like 類型",
-      "zh_CN": "Facebook Like 類型",
-      "ja_JP": "Facebook Like Layout",
-      "en_US": "Facebook Like Layout"
+      "zh_TW": "FB Like 類型",
+      "zh_CN": "FB Like 類型",
+      "ja_JP": "FB Like Layout",
+      "en_US": "FB Like Layout"
     },
     "type": "select",
     "elements": {
@@ -179,8 +179,8 @@
   {
     "name": "fb_like_show_faces",
     "desc": {
-      "zh_TW": "Facebook Like 使用者頭像",
-      "zh_CN": "Facebook Like 使用者頭像",
+      "zh_TW": "FB Like 使用者頭像",
+      "zh_CN": "FB Like 使用者頭像",
       "ja_JP": "アバター",
       "en_US": "Show Faces"
     },
@@ -208,8 +208,8 @@
   {
     "name": "fb_like_colorscheme",
     "desc": {
-      "zh_TW": "Facebook Like 色系",
-      "zh_CN": "Facebook Like 色系",
+      "zh_TW": "FB Like 色系",
+      "zh_CN": "FB Like 色系",
       "ja_JP": "カラースキーム",
       "en_US": "Color scheme"
     },
