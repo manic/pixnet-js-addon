@@ -3,7 +3,7 @@
         pixBookmarkButtons: function( options ) {
             var settings = $.extend({
                 enable_info: "true",
-                enable_murmur: "true",
+                enable_headlines:"true",
                 enable_facebook_share: "true",
                 enable_plurk: "true",
                 enable_twitter: "true",
@@ -18,8 +18,12 @@
                 fb_like_layout: "button_count",
                 demo: "false"
             }, options || {});
+
             // 只在單一文章頁才會作用。
-            if ( !w.location.href.match(/blog\/post/) && "true" != settings.demo )  return;
+            if ( !w.location.href.match(/blog\/post/) && "true" != settings.demo ) {
+                return;
+            }
+
             // load Google PlusScript
             window.___gcfg = {lang: 'zh-TW'};
 
@@ -49,24 +53,22 @@
                 var href = $('div.article').find('h2 a').attr('href');
                 var encode_href = encodeURIComponent(href);
                 var ret_html = '';
+                var $content = $('div.article-content');
 
-                var murmur = '<a title="分享至MURMUR" data-bookmark-type="murmur"><img src="//s.pixfs.net/blog/images/common/murmur.gif" title="MURMUR" alt="MURMUR" border="0" style="width:20px;height:20px;"></a>&nbsp;';
                 var facebook_share = '<a title="分享至facebook" data-bookmark-type="facebook"><img src="//s.pixfs.net/blog/images/common/facebook.gif" title="facebook" alt="facebook" border="0" style="width:18px;height:20px;"></a>&nbsp;';
                 var plurk = '<a title="分享至PLURK" data-bookmark-type="plurk"><img src="//s.pixfs.net/blog/images/common/plurk.gif" title="PLURK" alt="PLURK" border="0" style="width:18px;height:20px;"></a>&nbsp;';
                 var twitter = '<a title="分享至twitter" data-bookmark-type="twitter"><img src="//s.pixfs.net/blog/images/common/twitter.gif" title="twitter" alt="twitter" border="0" style="width:18px;height:20px;"></a>&nbsp;';
                 var funp = '<iframe width="70" height="20" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" src="http://funp.com/tools/buttoniframe.php?s=24&amp;url=' + encode_href + '"></iframe>&nbsp;';
-                var google_plus = '<g:plusone size="' + settings.g_plus_size +
-                '" annotation="' + settings.g_plus_annotation + '"></g:plusone>&nbsp;';
+                var google_plus = '<g:plusone size="' + settings.g_plus_size + '" annotation="' + settings.g_plus_annotation + '"></g:plusone>&nbsp;';
                 var facebook_like = generate_facebook_html(settings, encode_href);
+                var headlines = '<a title="喀嚓到7Headlines" href="javascript:jQuery.getScript(\'http://www.7headlines.com/static/js/clip.min.js?random='+Math.random()*1000+'\');"><img src="//s.pixfs.net/blog/images/common/7headlines.gif" title="7Headlines" alt="7Headlines" border="0" style="height:20px"></a>&nbsp;';
 
                 $(document).delegate('a[data-bookmark-type]', 'click', function() {
                     var url = '', bookmark_type = $(this).data('bookmark-type'),
                     title = d.title.split('@')[0].replace(/([\s]*$)/g,''),
                     href = $('div.article').find('h2 a').attr('href'),
                     encode_href = encodeURIComponent(href);
-                    if ('murmur' == bookmark_type) {
-                        url = "http://murmur.tw/?sharelink=" + encode_href;
-                    } else if ('facebook' == bookmark_type) {
+                    if ('facebook' == bookmark_type) {
                         url = 'http://www.facebook.com/share.php?u='+ encode_href +'&t='+encodeURIComponent(title);
                     } else if ('plurk' == bookmark_type) {
                         url = 'http://www.plurk.com/?qualifier=shares&status='+ encode_href;
@@ -90,8 +92,8 @@
                     ret_html += '<span style="position:relative;top:-7px;">分享:</span>&nbsp;';
                 }
 
-                if ("true" == settings.enable_murmur) {
-                    ret_html += murmur;
+                if ("true" == settings.enable_headlines) {
+                    ret_html += headlines;
                 }
 
                 if ("true" == settings.enable_facebook_share) {
@@ -130,5 +132,4 @@
             });
         }
     });
-
 })( jQuery, document, window );

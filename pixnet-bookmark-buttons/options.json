@@ -47,8 +47,8 @@
     "default": "true"
   },
   {
-    "name": "enable_murmur",
-    "desc": { "zh_TW": "MURMUR", "zh_CN": "MURMUR", "ja_JP": "MURMUR", "en_US": "MURMUR" },
+    "name": "enable_headlines",
+    "desc": { "zh_TW": "7Headlines", "zh_CN": "7Headlines", "ja_JP": "7Headlines", "en_US": "7Headlines" },
     "type": "select",
     "elements": {
       "true": { "desc": { "zh_TW": "開啟", "zh_CN": "開啟", "ja_JP": "オン", "en_US": "On" } },
