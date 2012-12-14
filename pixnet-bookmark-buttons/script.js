@@ -129,6 +129,7 @@
                     $(ret_html).insertBefore('div.article-content');
                     $(ret_html).insertAfter('div.article-content');
                 }
+                $('.bookmark a').css('cursor', 'pointer');
             });
         }
     });
