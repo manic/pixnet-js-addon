@@ -61,7 +61,7 @@
                 var funp = '<iframe width="70" height="20" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" src="http://funp.com/tools/buttoniframe.php?s=24&amp;url=' + encode_href + '"></iframe>&nbsp;';
                 var google_plus = '<g:plusone size="' + settings.g_plus_size + '" annotation="' + settings.g_plus_annotation + '"></g:plusone>&nbsp;';
                 var facebook_like = generate_facebook_html(settings, encode_href);
-                var headlines = '<a title="喀嚓到7Headlines" href="javascript:jQuery.getScript(\'http://www.7headlines.com/static/js/clip.min.js?random='+Math.random()*1000+'\');"><img src="//s.pixfs.net/blog/images/common/7headlines.gif" title="7Headlines" alt="7Headlines" border="0" style="height:20px;width:55px;"></a>&nbsp;';
+                var headlines = '<a title="喀嚓到7Headlines" href="javascript:(function(){var%20pixheadlines=document.createElement("script");pixheadlines.setAttribute("language","javascript");pixheadlines.setAttribute("src","http://www.7headlines.com/static/js/clip.min.js?random='+Math.random()*1000+'\');document.getElementsByTagName("head")[0].appendChild(pixheadlines);})();"><img src="//s.pixfs.net/blog/images/common/7headlines.gif" title="7Headlines" alt="7Headlines" border="0" style="height:20px;width:55px;"></a>&nbsp;';
 
                 $(document).delegate('a[data-bookmark-type]', 'click', function() {
                     var url = '', bookmark_type = $(this).data('bookmark-type'),
