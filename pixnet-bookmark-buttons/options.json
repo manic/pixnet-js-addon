@@ -123,7 +123,7 @@
     "desc": { "zh_TW": "Google Plus Annotation", "zh_CN": "Google Plus Annotation", "ja_JP": "Google Plus Annotation", "en_US": "Google Plus Annotation" },
     "type": "select",
     "elements": {
-      "standard": { "desc": { "zh_TW": "說明圖示", "zh_CN": "說明圖示", "ja_JP": "Standard", "en_US": "Standard" } },
+      "bubble": { "desc": { "zh_TW": "說明圖示", "zh_CN": "說明圖示", "ja_JP": "Standard", "en_US": "Standard" } },
       "inline": { "desc": { "zh_TW": "內置", "zh_CN": "內置", "ja_JP": "Inline", "en_US": "Inline" } },
       "none": { "desc": { "zh_TW": "無", "zh_CN": "無", "ja_JP": "None", "en_US": "None" } }
     },
